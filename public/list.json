@@ -1,0 +1,13 @@
+{
+  "tags": ["project","life"],
+  "articles": {
+    "example": {
+      "date": "2019/1/11",
+      "tags":["project"]
+    },
+    "trip": {
+      "date": "2019/1/11",
+      "tags":["project"]
+    }
+  }
+}
