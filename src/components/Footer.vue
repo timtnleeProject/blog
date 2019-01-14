@@ -23,7 +23,7 @@ export default {
   position: flex;
 }
 .title {
-    text-align: center;
+  text-align: center;
   padding: 10px 0px;
   font-size: 16px;
 }
