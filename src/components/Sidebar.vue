@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" :style="link_style">
     <div class="title">{{settings.HEADER_TITLE}}</div>
     <router-link to="/">Home</router-link>
     <router-link to="/">Articles</router-link>
@@ -18,9 +18,16 @@ export default Vue.extend({
       
     }
   },
-  computed:mapState({
-    settings:'settings'
-  })
+  computed:{
+    link_style(){
+      return {
+        color: this.settings.COLOR_LIGHT
+      }
+    },
+    ...mapState({
+      settings:'settings'
+    })
+  }
 })
 </script>
 

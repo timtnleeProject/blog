@@ -1,20 +1,18 @@
 <template>
   <div>
-    <div class="title">Newest articles</div>
+    <h2>New articles</h2>
     <div v-for="(p,i) in previews" :key="`preview${i}`" class="preview block" @click="linkto(p.name)">
-      <div class="md article">
-        <h3>{{p.title}}</h3>
-      </div>
-      <div>
+      <h3 class="title">{{p.title}}</h3>
+      <div class="line">
         <div class="line">date: {{preview_dates[i]}}</div>
       </div>
-      <div class="tags-container">
+      <div class="tags-container line">
         <div class="line">tags: </div>
         <div v-for="tag in lists.articles[p.name].tags" :key="`${p}-tag${tag}`" class="tag line">
-          {{tag}}
+          <div class="dot"></div>
+          <div class="tag-name">{{tag}}</div>
         </div>
       </div>
-      <!-- <div class="cover inner-block"></div> -->
     </div>
   </div>
 </template>
@@ -46,14 +44,11 @@ export default {
 <style scoped>
 .preview {
   width: 100%;
-  /* min-height: 200px; */
-  /* max-height: 210px; */
   cursor: pointer;
   overflow: hidden;
 }
-.preview>.md{
-  padding: 5px;
-  box-sizing: border-box;
+.title{
+  margin-block-end: 0.6em;
 }
 .preview>.cover {
   background-image: linear-gradient(to top, rgba(255,255,255,1),rgba(255,255,255,0.3),rgba(255,255,255,0));
@@ -67,10 +62,24 @@ export default {
 .tags-container>*+* {
   margin-left: 3px;
 }
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 5px;
+}
+.tag-name {
+  margin-right: 5px;
+}
 .tag {
-  border: 1px solid blueviolet;
-  border-radius: 5px;
-  color: blueviolet;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  border-radius: 50px 5px 5px 50px;
+  padding: 5px;
+  color: white;
+  background-color: blueviolet;
 }
 </style>
 

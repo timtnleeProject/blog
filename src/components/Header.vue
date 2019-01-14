@@ -1,7 +1,7 @@
 <template>
   <header class="header">
-    <h1 class="title" @click="toHome">{{settings.HEADER_TITLE}}</h1>
-    <div class="subtitle">{{settings.HEADER_SUBTITLE}}</div>
+    <h1 class="title" @click="toHome" :style="{color:settings.COLOR_LIGHT}">{{settings.HEADER_TITLE}}</h1>
+    <div class="subtitle" :style="{color:settings.COLOR_SUB}">{{settings.HEADER_SUBTITLE}}</div>
     <div class="hamburger" @click="toggleBar($event)">
       <img class="icon" src="icons/ham.png" alt="">
     </div>
@@ -21,8 +21,7 @@ export default {
   },
   methods: {
     toHome(){
-      return
-      // this.$router.push('/')
+      this.$router.push('/')
     },
     toggleBar(e){
       e.stopPropagation()
@@ -40,6 +39,7 @@ export default {
   z-index: 10;
 }
 .hamburger {
+  cursor: pointer;
   display: none;
 }
 .hamburger>.icon{
@@ -48,20 +48,21 @@ export default {
 }
 .title {
   padding: 10px 5px;
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 .subtitle {
   padding: 5px 10px;
-  font-size: 14px;
+  font-size: 1.1rem;
 }
 @media screen and (max-width: 768px){
   .header {
-    padding: 10px;
+    padding: 0px 10px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
   }
   .title {
+    font-size: 1.7rem;
     padding: 0px;
     flex: 1 1 0;
   }

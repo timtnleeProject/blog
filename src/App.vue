@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <my-header class="my-header" @toggleBar="toggleSideBar"></my-header>
+    <my-header class="my-header" @toggleBar="toggleSideBar" :style="header_style"></my-header>
     <div class="container">
       <router-view class="content"></router-view>
       <my-footer></my-footer>
     </div>
-    <div class="fixed-container" :class='{show:show}' @click="closeSideBar">
+    <div class="fixed-container" :class='{show:show}' @click="closeSideBar" :style="sidebar_style">
       <my-sidebar class="sidebar"></my-sidebar>
     </div>
   </div>
@@ -55,10 +55,22 @@ export default {
       })
     })
   },
-  computed: mapState({
-    settings: 'settings',
-    lists: 'lists'
-  }),
+  computed: {
+    sidebar_style(){
+      return {
+        backgroundColor: this.settings.COLOR_DARK
+      }
+    },
+    header_style(){
+      return {
+        backgroundColor: this.settings.COLOR_MAIN
+      }
+    },
+    ...mapState({
+      settings: 'settings',
+      lists: 'lists'
+    })
+  },
   methods: {
     toggleSideBar(){
       this.show = !this.show
@@ -72,8 +84,8 @@ export default {
 
 <style>
 :root {
-  --pd: 40px 30px 60px 35px; /* content*/
-  --pd-sm : 20px 15px 30px 17px;
+  --pd: 40px 30px 60px 80px; /* content*/
+  --pd-sm : 20px 15px 30px 17px; /* mobile*/
   --side-bar-width: 270px;
 }
 a {
@@ -81,8 +93,21 @@ a {
 }
 body {
   margin: 0;
-  font-size: 14px; /* root font size*/
+  font-size: 14px;
 }
+/* root font size*/
+@media screen and (max-width:992px) and (min-width: 768px){
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  body {
+    font-size: 18px;
+  }
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif, '微軟正黑體';
   -webkit-font-smoothing: antialiased;
@@ -118,7 +143,6 @@ body {
   right: 0;
   width: var(--side-bar-width);
   height: 100vh;
-  background-color: #2c3e50;
 }
 .sidebar{
   position: absolute;
@@ -132,9 +156,9 @@ body {
 }
 @media screen and (max-width: 768px){
   .container{
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
-    margin-right: 0px;
+    margin: 0px;
   } 
   .content {
     padding: var(--pd-sm);
