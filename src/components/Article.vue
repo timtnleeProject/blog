@@ -43,7 +43,7 @@ export default {
   mounted(){
     this.name = this.$route.params.name
     window.console.log(`[Fetch] fetch article "${this.name}"`)
-    this.$get(`/doc/${this.name}.md`).then(res=>{
+    this.$get(`./doc/${this.name}.md`).then(res=>{
       this.content = this.$markdown.render(res)
       this.$nextTick(()=>{
         window.Prism.highlightAll()
