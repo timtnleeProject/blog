@@ -1,0 +1,17 @@
+{
+  "tags": ["project","life","Mental Health"],
+  "articles": {
+    "example": {
+      "date": "2019/1/11",
+      "tags":["project"]
+    },
+    "trip": {
+      "date": "2019/1/11",
+      "tags":["project","life"]
+    },
+    "ex2": {
+      "date":"2019/1/14",
+      "tags":["Mental Health"]
+    }
+  }
+}
