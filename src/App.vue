@@ -63,7 +63,7 @@ export default {
     },
     header_style(){
       return {
-        backgroundColor: this.settings.COLOR_MAIN
+        backgroundColor: this.settings.COLOR_LIGHT
       }
     },
     ...mapState({
@@ -86,7 +86,8 @@ export default {
 :root {
   --pd: 40px 30px 60px 80px; /* content*/
   --pd-sm : 20px 15px 30px 17px; /* mobile*/
-  --side-bar-width: 270px;
+  --side-bar-width: 240px;
+  --tree-width: 230px;
 }
 a {
   color: inherit;
@@ -98,18 +99,18 @@ body {
 /* root font size*/
 @media screen and (max-width:992px) and (min-width: 768px){
   body {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 @media screen and (min-width: 992px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif, '微軟正黑體';
+  font-family: 'Avenir', Arial, Helvetica, sans-serif, '微軟正黑體';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #555555;
@@ -154,7 +155,12 @@ body {
   box-sizing: border-box;
   color: white;
 }
-@media screen and (max-width: 768px){
+.my-header {
+  position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+@media screen and (max-width: 992px){
   .container{
     width: 100%;
     overflow-x: hidden;

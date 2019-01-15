@@ -63,8 +63,8 @@ export default {
   margin-left: 3px;
 }
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: white;
   margin-right: 5px;
@@ -79,7 +79,7 @@ export default {
   border-radius: 50px 5px 5px 50px;
   padding: 5px;
   color: white;
-  background-color: blueviolet;
+  background-color: #0099CC;
 }
 </style>
 

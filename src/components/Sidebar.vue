@@ -33,7 +33,7 @@ export default Vue.extend({
 
 <style scoped>
 .sidebar {
-  padding-left: 20px;
+  padding-left: 16px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -42,11 +42,11 @@ export default Vue.extend({
 .title {
   color: white;
   padding-bottom: 5px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .sidebar>a {
   opacity: 0.8;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-decoration: none;
 }
 .sidebar>a:hover{
@@ -55,7 +55,7 @@ export default Vue.extend({
 .sidebar>*+*{
   margin-top: 1rem;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 992px){
   .sidebar{
     padding: 0;
     text-align: center;

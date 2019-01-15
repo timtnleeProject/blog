@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1 class="title" @click="toHome" :style="{color:settings.COLOR_LIGHT}">{{settings.HEADER_TITLE}}</h1>
+    <h2 class="title" @click="toHome" :style="{color:settings.COLOR_DARK}">{{settings.HEADER_TITLE}}</h2>
     <div class="subtitle" :style="{color:settings.COLOR_SUB}">{{settings.HEADER_SUBTITLE}}</div>
     <div class="hamburger" @click="toggleBar($event)">
       <img class="icon" src="icons/ham.png" alt="">
@@ -33,30 +33,33 @@ export default {
 
 <style scoped>
 .header {
-  padding: 20px;
-  background-color: white;
+  box-sizing: border-box;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
   box-shadow: -2px 1px 3px #777777;
   z-index: 10;
 }
 .hamburger {
   cursor: pointer;
   display: none;
+  margin-right: 10px;
 }
 .hamburger>.icon{
   width: 100%;
   height: 100%;
 }
 .title {
-  padding: 10px 5px;
+  margin: 0px 10px;
   cursor: pointer;
 }
 .subtitle {
-  padding: 5px 10px;
   font-size: 1.1rem;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 992px){
   .header {
-    padding: 0px 10px;
+    height: 50px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
