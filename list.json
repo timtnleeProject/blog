@@ -1,17 +1,24 @@
 {
-  "tags": ["project","life","Mental Health"],
-  "articles": {
-    "example": {
-      "date": "2019/1/11",
+  "tags": ["project","life","Mental Health","document"],
+  "articles": [
+    {
+      "name":"example",
+      "date": "2019/1/16",
       "tags":["project"]
     },
-    "trip": {
-      "date": "2019/1/11",
+    {
+      "name":"trip",
+      "date": "2019/1/10",
       "tags":["project","life"]
     },
-    "ex2": {
+    {
+      "name":"ex2",
       "date":"2019/1/14",
       "tags":["Mental Health"]
+    },{
+      "name":"README",
+      "date":"2019/1/16",
+      "tags":["document"]
     }
-  }
+  ]
 }
