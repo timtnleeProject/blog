@@ -6,7 +6,7 @@ import Constant from './constant'
 import router from './router'
 import store from './store/index'
 //style
-import './el.scss'
+import './styles/el.scss'
 
 Vue.config.productionTip = false
 

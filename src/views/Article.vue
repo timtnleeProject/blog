@@ -1,5 +1,5 @@
 <template>
-  <div class="article-area" @click="toggleMenu($event)">
+  <div @click="toggleMenu($event)">
     <div class="tree" :class="{show:show}">
       <ul v-for="(h1, j) in tree" :key="`h1${h1.name}`" class="h1-list">
           <li :class="{on:j===h1idx}" @click="scrollTo(h1.link)">{{h1.name}}</li>
@@ -12,7 +12,9 @@
       </ul>
     </div>
     <div class="menu-bar" @click.stop="()=>show=!show"><span>menu</span></div>
-    <div class="article" v-html="content"></div>
+    <div class="center-max-view">
+      <div class="article" v-html="content"></div>
+    </div>
   </div>
 </template>
 
@@ -147,8 +149,9 @@ export default {
 
 <style lang="scss" scoped>
 .article {
-  position: relative;
-  padding-left:var(--tree-width);
+  overflow-x: scroll;
+  display: block;
+  margin-left:var(--tree-width);
 }
 .tree {
   position: fixed;
@@ -197,7 +200,7 @@ export default {
     display: flex;
   }
   .article {
-    padding-left: 0px;
+    margin-left: 0px;
   }
 }
 

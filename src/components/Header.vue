@@ -1,15 +1,18 @@
 <template>
   <header class="header">
-    <h2 class="title" @click="toHome" :style="{color:settings.COLOR_DARK}">{{settings.HEADER_TITLE}}</h2>
-    <div class="subtitle" :style="{color:settings.COLOR_SUB}">{{settings.HEADER_SUBTITLE}}</div>
-    <div class="hamburger" @click="toggleBar($event)">
-      <img class="icon" src="icons/ham.png" alt="">
-    </div>
+    <h2 class="title" @click="toHome">{{settings.HEADER_TITLE}}</h2>
+    <div class="subtitle">{{settings.HEADER_SUBTITLE}}</div>
+    <hamburger class="hamburger" @click.native="toggleBar($event)"></hamburger>
   </header>
 </template>
 
 <script>
+import Hamburger from './Hamburger.vue'
+
 export default {
+  components: {
+    Hamburger
+  },
   data: ()=>{
     return {
     }
@@ -39,22 +42,21 @@ export default {
   align-items: center;
   width: 100%;
   box-shadow: -2px 1px 3px #777777;
+  font-family: 'Times New Roman', Times, serif;
   z-index: 10;
 }
 .hamburger {
-  cursor: pointer;
   display: none;
   margin-right: 10px;
 }
-.hamburger>.icon{
-  width: 100%;
-  height: 100%;
-}
+
 .title {
   margin: 0px 10px;
+  padding: 5px;
   cursor: pointer;
 }
 .subtitle {
+  padding: 5px;
   font-size: 1.1rem;
 }
 @media screen and (max-width: 992px){
@@ -65,7 +67,7 @@ export default {
     align-items: center;
   }
   .title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     padding: 0px;
     flex: 1 1 0;
   }
@@ -73,10 +75,9 @@ export default {
     display: none;
   }
   .hamburger {
-    display: block;
-    flex: 0 0 2rem;
-    width: 2rem;
-    height: 2rem;
+    display: flex;
+    flex: 0 0 1.8rem;
+    height: 1.8rem;
   }
 }
 </style>

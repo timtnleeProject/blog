@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" :style="footer_style">
+  <footer class="footer">
     <div class="title">{{settings.FOOTER_TEXT}}</div>
   </footer>
 </template>
@@ -11,12 +11,6 @@ export default {
     }
   },
   computed: {
-    footer_style(){
-      return {
-        backgroundColor: this.settings.COLOR_SUB,
-        color: this.settings.COLOR_DARK
-      }
-    },
     settings(){
       return this.$store.state.settings
     }

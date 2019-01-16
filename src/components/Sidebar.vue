@@ -1,10 +1,7 @@
 <template>
-  <div class="sidebar" :style="link_style">
+  <div class="sidebar">
     <div class="title">{{settings.HEADER_TITLE}}</div>
-    <router-link to="/">Home</router-link>
-    <router-link to="/">Articles</router-link>
-    <router-link to="/">Works</router-link>
-    <router-link to="/">About me</router-link>
+    <router-link v-for="r in routes" class="tx-light" :key="r.name" :to="r.path">{{r.name}}</router-link>
   </div> 
 </template>
 
@@ -15,15 +12,19 @@ import { mapState } from "vuex";
 export default Vue.extend({
   data: ()=>{
     return {
-      
+      routes: [{
+        name: 'Home',
+        path: '/'
+      },{
+        name: 'Articles',
+        path: '/search'
+      },{
+        name: 'About me',
+        path: '/about'
+      }]
     }
   },
   computed:{
-    link_style(){
-      return {
-        color: this.settings.COLOR_LIGHT
-      }
-    },
     ...mapState({
       settings:'settings'
     })

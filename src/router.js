@@ -3,12 +3,16 @@ import Vue from 'vue'
 
 Vue.use(VueRouter)
 
-import Preview from './components/Previews.vue'
-import Article from './components/Article.vue'
+import Home from './views/Home.vue'
+import Article from './views/Article.vue'
+import Search from './views/Search.vue'
+import About from './views/About.vue'
 
 const routes = [
-  { path: '/', component: Preview },
-  { path: '/article/:name', component: Article}
+  { path: '/', component: Home },
+  { path: '/article/:name', component: Article},
+  { path: '/search', component: Search },
+  { path: '/about', component: About}
 ]
   
 const router = new VueRouter({

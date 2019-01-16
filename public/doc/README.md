@@ -1,4 +1,4 @@
-# Blog
+# About this blog
 
 Vuejs 靜態部落格
 

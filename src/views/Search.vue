@@ -1,5 +1,5 @@
 <template>
-    <div>About ME</div>
+    <div>To Be Done</div>
 </template>
 
 <script>
@@ -7,8 +7,4 @@ export default {
     
 }
 </script>
-
-<style scoped>
-
-</style>
 

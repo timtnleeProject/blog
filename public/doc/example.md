@@ -1,6 +1,6 @@
 # Javascript
 
-###### tags: `javascript` `iterator` `js` `es6`
+This is some of my javascript notes.
 
 ## 名詞、概念
 

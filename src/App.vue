@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <my-header class="my-header" @toggleBar="toggleSideBar" :style="header_style"></my-header>
+    <my-header class="my-header bg-main tx-light" @toggleBar="toggleSideBar"></my-header>
     <div class="container">
       <router-view class="content"></router-view>
       <my-footer></my-footer>
     </div>
-    <div class="fixed-container" :class='{show:show}' @click="closeSideBar" :style="sidebar_style">
-      <my-sidebar class="sidebar"></my-sidebar>
+    <div class="fixed-container bg-dark" :class='{show:show}' @click="closeSideBar">
+      <my-sidebar class="sidebar bg-dark"></my-sidebar>
     </div>
   </div>
 </template>
@@ -38,17 +38,23 @@ export default {
       this.$store.commit('setLists', JSON.parse(res))
     })
     Promise.all([setSettings, setLists]).then(()=>{
-      const articles = []
-      for(let name in this.lists.articles) {
-        articles.push(name)
-      }
-      this.$getArticles(articles).then(raws=>{
+      const table = {}
+      const articles_names = this.lists.articles.map(a=>{ 
+        table[a.name] = {//transform mapping table
+          date: a.date,
+          tags: a.tags
+        }
+        return a.name
+      })
+      this.$getArticles(articles_names).then(raws=>{
         this.$store.commit('setPreviews',raws.map(r=>{
-          const content_ary = r.content.split('\n')
+          const content_ary = r.content.split('\n').filter(str=>str.trim()!="")
+          const paragraph =  content_ary.slice(1, 1+this.settings.PREVIEW_LINE).join('\n')
           return {
             name: r.name,
-            content: this.$markdown.render(content_ary.slice(0,this.settings.PREVIEW_LINE).join('\n')),
-            date: new Date(this.lists.articles[r.name].date),
+            content: this.$markdown.render(paragraph),
+            date: new Date(table[r.name].date),
+            tags: table[r.name].tags,
             title: content_ary[0].slice(2,-1)
           }
         }))
@@ -56,16 +62,6 @@ export default {
     })
   },
   computed: {
-    sidebar_style(){
-      return {
-        backgroundColor: this.settings.COLOR_DARK
-      }
-    },
-    header_style(){
-      return {
-        backgroundColor: this.settings.COLOR_LIGHT
-      }
-    },
     ...mapState({
       settings: 'settings',
       lists: 'lists'
@@ -83,14 +79,18 @@ export default {
 </script>
 
 <style>
-:root {
+:root{
   --pd: 40px 30px 60px 80px; /* content*/
   --pd-sm : 20px 15px 30px 17px; /* mobile*/
   --side-bar-width: 240px;
   --tree-width: 230px;
+  --max-view: 750px;
 }
 a {
   color: inherit;
+}
+.b {
+  color: black;
 }
 body {
   margin: 0;
@@ -116,7 +116,7 @@ body {
   color: #555555;
 }
 .block {
-  box-shadow: 1px 1px 3px gray;
+  /* box-shadow: 1px 1px 3px gray; */
   padding: 10px;
   margin-bottom: 10px;
   position: relative;
@@ -134,7 +134,7 @@ body {
 }
 .content{
   width: 100%;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   box-sizing: border-box;
   padding: var(--pd);
 }
@@ -157,8 +157,8 @@ body {
 }
 .my-header {
   position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
 }
 @media screen and (max-width: 992px){
   .container{
