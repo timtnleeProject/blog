@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState } from "vuex";
+import { mapState } from "vuex"
 
 export default Vue.extend({
   data: ()=>{

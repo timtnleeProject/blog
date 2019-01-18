@@ -4,23 +4,63 @@ Vuejs 靜態部落格
 
 ## 特色
 
-* 不須額外編譯建置，可直接使用 github 新增修改文章、部分客製化設定
+* 不須額外編譯建置，可直接使用 github 在 gh-pages 分支新增修改文章、部分客製化設定
 * 文章語法使用 markdown
+* 我覺得版面還不錯
 * 我還沒想到
 
+## Repository
+
+### braches
+
+* master: merge 最近完成版的 dev brach
+* dev: 開發，vue-cli
+* gh-pages: 放置 build 完成的檔案，並使用 github pages 服務呈現頁面
+
+### 使用方法
+
+1. Fork repository
+2. repository 設定使用 gh-pages 分支呈現頁面
+3. 開始使用 gh-pages 設定 blog
+
+## gh-pages 結構
+
+```javascript
+|_ css
+|_ doc
+|_ icons
+|_ images
+|_ js
+.gitignore
+favicon.ico
+index.html
+list.json
+setting.js
+```
+
 ## 文章
+
+### 規範
 
 * 文章存放路徑: `/doc`， 直接在此資料夾修改或新增文章
 * 文章一律使用 markdown 格式
 * **文章第一行必須為大標題 `# 你的標題`，以便預覽頁順利呈現**
 
+```markdown
+# Title
+
+內文，會出現在預覽
+
+## header
+...
+```
+
 ### 文章清單
 
-文章清單為 `list.json` 紀錄文章的資訊， 結構如下：
+文章清單為 `list.json`, 紀錄文章的資訊， 結構如下：
 
 ```javascript
 {
-  "tags": ["project","life","Mental Health"], //這是所有的tag, 搜尋會用到
   "articles": [  //這是所有的文章
     {
       "name":"example",  // 文章的檔名(不包含.md副檔名)
@@ -43,11 +83,15 @@ Vuejs 靜態部落格
 
 ### 新增文章
 
-新增文章至 `/doc` 資料夾後，需在文章清單 (`list.articles`) 加入文章資訊
+新增文章至 `/doc` 資料夾後，需在文章清單 (`list.articles`)陣列中 加入文章資訊
 
-### 新增標籤
-
-需在文章清單 (`list.tags`) 加入標籤資訊
+```javascript
+{
+  "name":"ex2", //文章檔案名稱
+  "date":"2019/1/14", //文章日期
+  "tags":["Mental Health"] //文章標籤
+}
+```
 
 ### 引用圖片
 
@@ -58,6 +102,8 @@ Vuejs 靜態部落格
 ```markdown
 ![""](images/your_images.jpg)
 ```
+
+可在 images 底下再分資料夾區別各個文章的圖片
 
 注意如果圖片檔名含有特殊字元，需使用 URL Encoding
 
@@ -73,6 +119,36 @@ Vuejs 靜態部落格
 
 設定檔在 `setting.js`，可直接更改
 
+```javascript
+return {
+  HEADER_TITLE: "This is Blog's name",
+  HEADER_SUBTITLE: "subtitle",
+  FOOTER_TEXT: "footer text",
+  HOME_ARTICLE_TEXT: "Newest articles",
+  HOME_MAX_PREVIEW : 10, //首頁顯示文章數量
+  PREVIEW_LINE : 1, //文章預覽段落數
+  CONTACT: [ //About Page's icons
+    {src:'icons/fb.png',href:'/'},
+    {src:'icons/ig.png',href:'/'},
+    {src:'icons/github.png',href:'https://github.com/timtnleeProject'}
+  ]
+}
+```
+
+### 設定個人頁面連結 icon
+
+更改 `settings.CONTANCT`
+
+```javascript
+CONTACT: [ //About Page's icons
+  {src:'icons/fb.png',href:'/'}, //src為圖片位置, href 為連結
+  {src:'icons/ig.png',href:'/'},
+  {src:'icons/github.png',href:'https://github.com/timtnleeProject'}
+]
+```
+
+記得確認 icon 圖片位置上傳成功
+
 ### 色系
 
 可在 `css/theme.css` 中更改 css 變數
@@ -86,3 +162,11 @@ Vuejs 靜態部落格
   --color-special: #0099CC; /* 特別顏色*/
 }
 ```
+
+## Syntax hightlight
+
+使用 Prism, 預設只有 js, css, html, python
+
+如需其他語言樣式，請至 Prism 網站下載相對應的 js, css 檔案
+
+分別放至 `js/prism.js`, `css/prism.css`

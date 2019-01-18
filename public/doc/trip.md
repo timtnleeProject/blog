@@ -6,6 +6,13 @@ It’s official, Amazon has finally confirmed its plan to split its new headquar
 
 ## H2
 
+```python
+a = [1,2,3]
+b = [2,3,1]
+def ggg():
+   return a + b
+```
+
 |name|price|rate|
 |-|-|-|
 |ajanbd|10.2|4|

@@ -1,6 +1,8 @@
 <template>
-    <div class="center-max-view flex-col">
-      <div class="article" v-html="content"></div>
+    <div>
+      <div class="center-max-view flex-col">
+        <div class="article" v-html="content"></div>
+      </div>
       <div class="contact">
         <a v-for="info in settings.CONTACT" :key="info.src" :href="info.href" target="_blank">
           <img class="icon" :src="info.src" >
