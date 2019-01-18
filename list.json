@@ -1,5 +1,5 @@
 {
-  "tags": ["project","life","Mental Health","document"],
+  "about":"about",
   "articles": [
     {
       "name":"example",
@@ -15,10 +15,16 @@
       "name":"ex2",
       "date":"2019/1/14",
       "tags":["Mental Health"]
-    },{
+    },
+    {
       "name":"README",
       "date":"2019/1/16",
-      "tags":["document"]
+      "tags":["document","blog"]
+    },
+    {
+      "name":"investment",
+      "date":"2019/1/18",
+      "tags":["news","finance"]
     }
   ]
 }
