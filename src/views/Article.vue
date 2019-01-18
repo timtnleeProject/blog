@@ -13,15 +13,25 @@
     </div>
     <div class="menu-bar" @click.stop="()=>show=!show"><span>menu</span></div>
     <div class="center-max-view">
-      <div class="article" v-html="content"></div>
+      <div class="article-wrap">
+        <div class="tags-container">
+          <div>tags: </div>
+          <tag v-for="tag in tags" :key="tag" :tag="tag"></tag>
+        </div>
+        <div class="article" v-html="content"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Tag from '../components/Tag.vue'
 import { mapState } from 'vuex'
 
 export default {
+  components: {
+    Tag,
+  },
   data: ()=>{
     return {
       name: '',
@@ -57,6 +67,10 @@ export default {
     })
   },
   computed: {
+    tags() {
+      const article = this.previews.find(prev=>prev.name===this.name)
+      return (article)?article.tags:[]
+    },
     ...mapState({
       previews: 'previews'
     })
@@ -69,7 +83,7 @@ export default {
     calcScrollPos() {
       if(this.tree.length===0) return
       
-      let h1top,h2top,h3top;
+      let h1top,h2top,h3top
       let h1idx=-1,h2idx =-1,h3idx = -1
       
       h1top = this.tree.map(h=>h.link.offsetTop)
@@ -148,7 +162,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.article {
+.article-wrap {
   overflow-x: scroll;
   display: block;
   margin-left:var(--tree-width);
@@ -157,8 +171,10 @@ export default {
   position: fixed;
   top: 90px; /* header height + 10px*/
   left: 0;
+  padding: 10px;
   z-index: 100;
   max-height: 80vh;
+  box-sizing: border-box;
   width:var(--tree-width);
   overflow-y: scroll;
   overflow-x: hidden;
@@ -199,7 +215,7 @@ export default {
   .menu-bar {
     display: flex;
   }
-  .article {
+  .article-wrap {
     margin-left: 0px;
   }
 }

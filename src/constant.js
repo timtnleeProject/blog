@@ -12,7 +12,7 @@ export default {
         xhr.open('GET', url)
         xhr.onreadystatechange = function () {
           if (this.status === 200 && this.readyState === 4) resolve(this.responseText)
-          else if (this.readyState === 4) reject()
+          else if (this.readyState === 4) reject(`Fetching ${url} failed`)
         }
         xhr.send()
       })

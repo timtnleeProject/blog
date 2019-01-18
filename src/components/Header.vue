@@ -37,7 +37,7 @@ export default {
 <style scoped>
 .header {
   box-sizing: border-box;
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   width: 100%;

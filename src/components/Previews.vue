@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="(p,i) in sorted_previews" :key="`preview${i}`" class="preview block" @click="linkto(p.name)">
-      <h3 class="title">{{p.title}}</h3>
+    <div v-for="(p,i) in previews" :key="`preview${i}`" class="preview block" @click="linkto({path:`/article/${p.name}`})">
+      <h3 class="title b">{{p.title}}</h3>
       <div class="prev-area block">
         <div class="plan-text line" v-html="p.content"></div>
         <div class="inner-block cover"></div>
@@ -11,10 +11,7 @@
       </div>
       <div class="tags-container line">
         <div class="line b">tags: </div>
-        <div v-for="tag in p.tags" :key="`${p}-tag${tag}`" class="tag line bg-special">
-          <div class="dot"></div>
-          <div class="tag-name">{{tag}}</div>
-        </div>
+        <tag v-for="tag in p.tags" :key="`${p}-tag${tag}`" :tag="tag" class="line"></tag>
       </div>
     </div>
   </div>
@@ -22,28 +19,28 @@
 
 <script>
 import { mapState } from 'vuex'
+import Tag from './Tag.vue'
 
 export default {
-  props:['max'],
+  props:['max','previews'],
+  components: {
+    Tag
+  },
   computed:{
     preview_dates(){
-      return (this.sorted_previews)?this.sorted_previews.map(p=>{
+      return (this.previews)?this.previews.map(p=>{
         const d = p.date
         return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`
       }):[]
     },
-    sorted_previews(){
-      return this.previews.slice().sort((a,b)=>b.date.getTime() - a.date.getTime()).slice(0,this.max)
-    },
     ...mapState({
-      previews: 'previews',
       lists:'lists',
       settings: 'settings'
     })
   } ,
   methods: {
-    linkto(name){
-      this.$router.push(`/article/${name}`)
+    linkto(route){
+      this.$router.replace(route)
     }
   }
 }
@@ -71,34 +68,6 @@ export default {
 .line {
   padding: 3px;
   font-size: 0.86rem;
-}
-.tags-container {
-  display: flex;
-}
-.tags-container>*+* {
-  margin-left: 3px;
-}
-.dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: white;
-  margin-right: 5px;
-}
-.tag-name {
-  margin-right: 5px;
-}
-.tag {
-  font-size: 0.86rem;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  border-radius: 50px 5px 5px 50px;
-  padding: 3px 5px;
-  color: white;
-}
-.tag:hover>.tag-name {
-  text-decoration: underline;
 }
 </style>
 

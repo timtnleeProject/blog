@@ -2,6 +2,7 @@
   <div id="app">
     <my-header class="my-header bg-main tx-light" @toggleBar="toggleSideBar"></my-header>
     <div class="container">
+      <loading :loaded="loaded"></loading>
       <router-view class="content"></router-view>
       <my-footer></my-footer>
     </div>
@@ -15,19 +16,22 @@
 import MyHeader from './components/Header.vue'
 import MySidebar from './components/Sidebar.vue'
 import MyFooter from './components/Footer.vue'
-import { mapState } from "vuex";
+import Loading from './components/Loading.vue'
+import { mapState } from "vuex"
 
 export default {
   name: 'app',
   data: ()=>{
     return {
-      show: false
+      show: false,
+      loaded: false,
     }
   },
   components: {
     MyHeader,
     MyFooter,
-    MySidebar
+    MySidebar,
+    Loading
   },
   created(){
     window.console.log('[Init] Get articles\' previews')
@@ -39,6 +43,8 @@ export default {
     })
     Promise.all([setSettings, setLists]).then(()=>{
       const table = {}
+      const tags_map = {}
+      const tag_lists = []
       const articles_names = this.lists.articles.map(a=>{ 
         table[a.name] = {//transform mapping table
           date: a.date,
@@ -50,14 +56,23 @@ export default {
         this.$store.commit('setPreviews',raws.map(r=>{
           const content_ary = r.content.split('\n').filter(str=>str.trim()!="")
           const paragraph =  content_ary.slice(1, 1+this.settings.PREVIEW_LINE).join('\n')
+          const tags = table[r.name].tags
+          tags.forEach(tag=>{
+            if(!tags_map[tag]){
+              tags_map[tag] = true
+              tag_lists.push(tag)
+            } 
+          })
           return {
             name: r.name,
-            content: this.$markdown.render(paragraph),
+            content: this.$markdown.render(paragraph)+ '</br>',
             date: new Date(table[r.name].date),
-            tags: table[r.name].tags,
-            title: content_ary[0].slice(2,-1)
+            tags: tags.sort(),
+            title: content_ary[0].slice(-(content_ary[0].length-2))
           }
         }))
+        this.$store.commit('setTags', tag_lists)
+        this.loaded = true
       })
     })
   },
@@ -95,6 +110,7 @@ a {
 body {
   margin: 0;
   font-size: 14px;
+   -webkit-tap-highlight-color:rgba(255,0,0,0);
 }
 /* root font size*/
 @media screen and (max-width:992px) and (min-width: 768px){

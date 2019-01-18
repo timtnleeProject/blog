@@ -38,7 +38,8 @@
       "indent": [
         "error",
         2
-      ]
+      ],
+      "semi": ["error", "never"]
     },
     "parserOptions": {
       "parser": "babel-eslint"
