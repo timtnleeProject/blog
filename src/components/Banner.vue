@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <h3 class="quote tx-main">{{settings.QUOTE}}</h3>
-    <img src="images/default/bird on water.jpg" alt="" srcset="">
+    <img :src="settings.BANNER_IMAGE" alt="" srcset="">
   </div>
 </template>
 

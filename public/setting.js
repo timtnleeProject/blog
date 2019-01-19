@@ -3,6 +3,7 @@ return {
   HEADER_SUBTITLE: "subtitle",
   FOOTER_TEXT: "footer text",
   HOME_ARTICLE_TEXT: "Newest articles",
+  BANNER_IMAGE: "images/default/bird on water.jpg",
   QUOTE: "\"An apple a day, keep the doctor away.\"",
   HOME_MAX_PREVIEW : 10, //首頁顯示文章數量
   PREVIEW_LINE : 1, //文章預覽段落數

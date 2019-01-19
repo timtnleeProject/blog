@@ -23,7 +23,7 @@ Vuejs static blog
 ### Usage
 
 1. Fork repository
-2. setting GitHub Pages serve the `gh-pages` branch !["not found"](https://timtnleeproject.github.io/blog/images/default/ghpages.JPG)
+2. setting GitHub Pages serve the `gh-pages` branch !["not found"](https://raw.githubusercontent.com/timtnleeProject/vuejs-static-blog/master/public/images/default/ghpages.JPG)
 3. start setting blog on `gh-pages` branch
 
 ## gh-pages branch
@@ -128,6 +128,7 @@ return {
   HEADER_SUBTITLE: "subtitle",
   FOOTER_TEXT: "footer text",
   HOME_ARTICLE_TEXT: "Newest articles",
+  BANNER_IMAGE: "images/default/bird on water.jpg", //path of the home page image
   HOME_MAX_PREVIEW : 10, //home page's articles number
   PREVIEW_LINE : 1, //number of paragraph for article's preview
   CONTACT: [ //About Page's icons
