@@ -1,5 +1,6 @@
 <template>
   <div @click="toggleMenu($event)">
+    <loading :loaded="loaded"></loading>
     <div class="tree" :class="{show:show}">
       <ul v-for="(h1, j) in tree" :key="`h1${h1.name}`" class="h1-list">
           <li :class="{on:j===h1idx}" @click="scrollTo(h1.link)">{{h1.name}}</li>
@@ -26,20 +27,23 @@
 
 <script>
 import Tag from '../components/Tag.vue'
+import Loading from '../components/Loading.vue'
 import { mapState } from 'vuex'
 
 export default {
   components: {
     Tag,
+    Loading
   },
   data: ()=>{
     return {
       name: '',
       content: '',
       tree: [],
+      loaded: false,
       scrollY: 0,
       expand_all: false,
-      sc_offset: 100, //scroll offet of menu
+      sc_offset: 80, //scroll offet of scroll to
       h1idx: -1,
       h2idx: -1,
       h3idx: -1,
@@ -63,6 +67,7 @@ export default {
         this.setLinksAttr()
         this.generateMenu()
         this.scroll()
+        this.loaded = true
       })
     })
   },
@@ -150,7 +155,7 @@ export default {
       window.console.log('[App] generate menu.')
     },
     scrollTo(el){
-      window.scrollTo(0,el.offsetTop+1)
+      window.scrollTo(0,el.offsetTop - this.sc_offset)
       this.scroll()
     },
     toggleMenu(e){

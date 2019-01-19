@@ -1,5 +1,5 @@
 <template>
-  <div class="tag" @click.stop="linkto({path:'/search',query:{tag}})">
+  <div class="tag" @click.stop="linkto()">
      <div class="dot"></div>
      <div class="tag-name">{{tag}}</div>
   </div>
@@ -9,8 +9,10 @@
 export default {
   props: ['tag'],
   methods: {
-    linkto(route){
-      this.$router.push(route)
+    linkto(){
+      const query = {}
+      query[this.tag] = true
+      this.$router.push({path:'/search',query})
     }
   }
 }

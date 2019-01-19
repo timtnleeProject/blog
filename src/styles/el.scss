@@ -23,13 +23,24 @@
   img {
     max-width: 100%;
   }
-  h1,h2,h3,h4,h5,h6 {
+  h1,h2 {
     color: black;
+    margin: 2rem 0px 1rem 0px;
+  }
+  h3,h4,h5,h6 {
+    padding-left: 5px;
+    color: black;
+    margin: 1.5rem 0px 1rem 0px;
+  }
+  h1,h2 {
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 5px;
   }
   *:not(pre)>code{
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     border-radius: 3px;
     background-color: #dddddd;
+    font-size: 0.86em;
     padding: 3px;
   }
   table {
@@ -46,13 +57,13 @@ h1 {
   font-size: 2.0rem;
 }
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 h5 {
   font-size: 1rem;

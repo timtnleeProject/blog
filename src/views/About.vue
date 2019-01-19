@@ -1,6 +1,7 @@
 <template>
     <div>
-      <div class="center-max-view flex-col">
+      <loading :loaded="loaded"></loading>
+      <div class="center-max-view">
         <div class="article" v-html="content"></div>
       </div>
       <div class="contact">
@@ -13,11 +14,16 @@
 
 <script>
 import { mapState } from "vuex"
+import Loading from '../components/Loading.vue'
 
 export default {
+  components: {
+    Loading
+  },
   data: ()=>{
     return {
       content: '',
+      loaded: false
     }
   },
   created() {
@@ -34,6 +40,7 @@ export default {
       if(this.lists.about) {
         this.$get(`doc/${this.lists.about}.md`).then(res=>{
           this.content = this.$markdown.render(res)
+          this.loaded = true
         })
       }
     }

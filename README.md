@@ -1,29 +1,32 @@
 # Blog
 
-Vuejs 靜態部落格
+[中文文件](https://timtnleeproject.github.io/blog/#/article/README)
 
-## 特色
+Vuejs static blog
 
-* 不須額外編譯建置，可直接使用 github 在 gh-pages 分支新增修改文章、部分客製化設定
-* 文章語法使用 markdown
-* 我覺得版面還不錯
-* 我還沒想到
+[Demo](https://timtnleeproject.github.io/blog/#/)
+
+## Features
+
+* Directly use github on gh-pages brach to update, add articles and update settings, no need of coding or compiling.
+* Parsing markdwon files as articles.
+* Syntax highlight (Prism)
 
 ## Repository
 
 ### braches
 
-* master: merge 最近完成版的 dev brach
-* dev: 開發，vue-cli
-* gh-pages: 放置 build 完成的檔案，並使用 github pages 服務呈現頁面
+* master: merge recently finished commit on dev brach
+* dev: development using vue-cli
+* gh-pages: built static files, using GitHub Pages service
 
-### 使用方法
+### Usage
 
 1. Fork repository
-2. repository 設定使用 gh-pages 分支呈現頁面
-3. 開始使用 gh-pages 設定 blog
+2. setting GitHub Pages serve the `gh-pages` branch !["not found"](images/ghpages.jpg)
+3. start setting blog on `gh-pages` branch 
 
-## gh-pages 結構
+## gh-pages branch
 
 ```javascript
 |_ css
@@ -38,34 +41,34 @@ list.json
 setting.js
 ```
 
-## 文章
+## articles
 
-### 規範
+### restrict
 
-* 文章存放路徑: `/doc`， 直接在此資料夾修改或新增文章
-* 文章一律使用 markdown 格式
-* **文章第一行必須為大標題 `# 你的標題`，以便預覽頁順利呈現**
+* folder of articles: `/doc`， directly add and update article at this folder.
+* using markdown file format
+* **first line of the markdown file must be `# YOUR_TITLE` to parse the preview content**
 
 ```markdown
 # Title
 
-內文，會出現在預覽
+content...will show in preview
 
 ## header
 ...
 ```
 
-### 文章清單
+### article lists
 
-文章清單為 `list.json`, 紀錄文章的資訊， 結構如下：
+`list.json` is the article lists that record articles metadata, it looks like:
 
 ```javascript
 {
-  "articles": [  //這是所有的文章
+  "articles": [  //all the articles
     {
-      "name":"example",  // 文章的檔名(不包含.md副檔名)
-      "date": "2019/1/16", //文章的日期
-      "tags":["project"]   //文章的標籤
+      "name":"example",  // markdown file's name (exculde '.md' file type)
+      "date": "2019/1/16", // date of the article
+      "tags":["project"]   // tags of the article
     },
     {
       "name":"trip",
@@ -81,43 +84,43 @@ setting.js
 }
 ```
 
-### 新增文章
+### add articles
 
-新增文章至 `/doc` 資料夾後，需在文章清單 (`list.articles`)陣列中 加入文章資訊
+after you add a markdown file to `/doc` folder, don't forget to add article informations to the array list(`list.articles`)
 
 ```javascript
 {
-  "name":"ex2", //文章檔案名稱
-  "date":"2019/1/14", //文章日期
-  "tags":["Mental Health"] //文章標籤
+  "name":"ex2", // markdown file's name (exculde '.md' file type)
+  "date":"2019/1/14", // date of the article
+  "tags":["Mental Health"] // tags of the article
 }
 ```
 
-### 引用圖片
+### images file
 
-圖片存放位置 `/images` 資料夾
+images are saved in `/images` folder
 
-上傳圖片後可在 markdown 中引用
+after you upload the image you can refer it in your markdown file
 
 ```markdown
 ![""](images/your_images.jpg)
 ```
 
-可在 images 底下再分資料夾區別各個文章的圖片
+you can also add subfolder under `images` folder to distinguish different articles' pictures
 
-注意如果圖片檔名含有特殊字元，需使用 URL Encoding
+notice that if your image's name includes special characters, URL Encoding is needed.
 
-例如圖片為 `my pic.jpg`，引用方式：
+for example if  image's name is `my pic.jpg`, to correctly refer to it:
 
 ```markdown
 ![""](images/my%20pic.jpg.jpg)
 ```
 
-## 客製化
+## customize
 
-### 屬性、文字設定
+### attributes, text setting
 
-設定檔在 `setting.js`，可直接更改
+`setting.js` is the setting file, just change it if you need to.
 
 ```javascript
 return {
@@ -125,8 +128,8 @@ return {
   HEADER_SUBTITLE: "subtitle",
   FOOTER_TEXT: "footer text",
   HOME_ARTICLE_TEXT: "Newest articles",
-  HOME_MAX_PREVIEW : 10, //首頁顯示文章數量
-  PREVIEW_LINE : 1, //文章預覽段落數
+  HOME_MAX_PREVIEW : 10, //home page's articles number
+  PREVIEW_LINE : 1, //number of paragraph for article's preview
   CONTACT: [ //About Page's icons
     {src:'icons/fb.png',href:'/'},
     {src:'icons/ig.png',href:'/'},
@@ -135,38 +138,39 @@ return {
 }
 ```
 
-### 設定個人頁面連結 icon
+### set the About page icons
 
-更改 `settings.CONTANCT`
+change the `settings.CONTANCT`
 
 ```javascript
 CONTACT: [ //About Page's icons
-  {src:'icons/fb.png',href:'/'}, //src為圖片位置, href 為連結
-  {src:'icons/ig.png',href:'/'},
+  {src:'icons/fb.png',href:'https://yourfblinks'}, //src is the image url, href is link
+  {src:'icons/ig.png',href:'https://youriglinks'},
   {src:'icons/github.png',href:'https://github.com/timtnleeProject'}
 ]
 ```
 
-記得確認 icon 圖片位置上傳成功
+make sure you upload the right icon at `icons` folder
 
-### 色系
+### color theme
 
-可在 `css/theme.css` 中更改 css 變數
+change the css variables in `css/theme.css`
 
 ```css
 :root {
-  --color-dark: #1e2022; /* 深色*/
-  --color-main: #52616a; /* 主要顏色*/
-  --color-sub: #c9d6de;  /* 副色*/
-  --color-light: #f0f5f9;/* 亮色*/
-  --color-special: #0099CC; /* 特別顏色*/
+  --color-dark: #1e2022;
+  --color-main: #52616a;
+  --color-sub: #c9d6de;
+  --color-light: #f0f5f9;
+  --color-special: #0099CC;
+  --font-family:  'Avenir', Arial,'微軟正黑體',Helvetica, sans-serif;
 }
 ```
 
 ## Syntax hightlight
 
-使用 Prism, 預設只有 js, css, html, python
+This blog is using Prism, defult languages are js, css, html and python
 
-如需其他語言樣式，請至 Prism 網站下載相對應的 js, css 檔案
+if you need more languages support, please go visit Prism's website and download the corresponding js, css files
 
-分別放至 `js/prism.js`, `css/prism.css`
+put the files to `js/prism.js` and `css/prism.css`

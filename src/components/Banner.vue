@@ -1,13 +1,17 @@
 <template>
   <div class="banner">
-    <h3 class="quote tx-main">"An apple a day, keeps doctors away."</h3>
+    <h3 class="quote tx-main">{{settings.QUOTE}}</h3>
     <img src="images/default/bird on water.jpg" alt="" srcset="">
   </div>
 </template>
 
 <script>
 export default {
-  
+  computed: {
+    settings() {
+      return this.$store.state.settings
+    }
+  }
 }
 </script>
 

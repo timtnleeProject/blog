@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="title">{{settings.HEADER_TITLE}}</div>
-    <router-link v-for="r in routes" class="tx-light" :key="r.name" :to="r.path">{{r.name}}</router-link>
+    <router-link v-for="r in routes" class="tx-light" :class="{active:r.path===$route.path}" :key="r.name" :to="r.path">{{r.name}}</router-link>
   </div> 
 </template>
 
@@ -47,6 +47,13 @@ export default Vue.extend({
 }
 .sidebar>a {
   opacity: 0.8;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+.sidebar>a.active {
+  opacity: 0.8;
+  border-left: 2px solid;
+  padding-left: 5px;
   font-size: 1.1rem;
   text-decoration: none;
 }

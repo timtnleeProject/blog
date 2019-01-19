@@ -2,12 +2,15 @@
 
 Vuejs 靜態部落格
 
+[Demo](https://timtnleeproject.github.io/blog/#/)
+
 ## 特色
 
 * 不須額外編譯建置，可直接使用 github 在 gh-pages 分支新增修改文章、部分客製化設定
 * 文章語法使用 markdown
+* Syntax highlight (Prism)
 * 我覺得版面還不錯
-* 我還沒想到
+* 第五點我還沒想到
 
 ## Repository
 
@@ -15,12 +18,12 @@ Vuejs 靜態部落格
 
 * master: merge 最近完成版的 dev brach
 * dev: 開發，vue-cli
-* gh-pages: 放置 build 完成的檔案，並使用 github pages 服務呈現頁面
+* gh-pages: 放置 build 完成的檔案，並使用 GitHub Pages 服務呈現頁面
 
 ### 使用方法
 
 1. Fork repository
-2. repository 設定使用 gh-pages 分支呈現頁面
+2. repository 設定使用 `gh-pages` 分支呈現 GitHub Pages 頁面!["not found"](images/default/ghpages.jpg)
 3. 開始使用 gh-pages 設定 blog
 
 ## gh-pages 結構
@@ -141,13 +144,13 @@ return {
 
 ```javascript
 CONTACT: [ //About Page's icons
-  {src:'icons/fb.png',href:'/'}, //src為圖片位置, href 為連結
-  {src:'icons/ig.png',href:'/'},
+  {src:'icons/fb.png',href:'https://yourfblinks'}, //src為圖片位置, href 為連結
+  {src:'icons/ig.png',href:'https://youriglinks'},
   {src:'icons/github.png',href:'https://github.com/timtnleeProject'}
 ]
 ```
 
-記得確認 icon 圖片位置上傳成功
+記得在 `icons` 資料夾上傳對應的圖示
 
 ### 色系
 
@@ -155,11 +158,12 @@ CONTACT: [ //About Page's icons
 
 ```css
 :root {
-  --color-dark: #1e2022; /* 深色*/
-  --color-main: #52616a; /* 主要顏色*/
-  --color-sub: #c9d6de;  /* 副色*/
-  --color-light: #f0f5f9;/* 亮色*/
-  --color-special: #0099CC; /* 特別顏色*/
+  --color-dark: #1e2022;
+  --color-main: #52616a;
+  --color-sub: #c9d6de;
+  --color-light: #f0f5f9;
+  --color-special: #0099CC;
+  --font-family:  'Avenir', Arial,'微軟正黑體',Helvetica, sans-serif;
 }
 ```
 

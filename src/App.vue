@@ -95,11 +95,11 @@ export default {
 
 <style>
 :root{
-  --pd: 40px 30px 60px 80px; /* content*/
-  --pd-sm : 20px 15px 30px 17px; /* mobile*/
+  --pd: 40px 60px 60px 30px; /* content*/
+  --pd-sm : 20px 20px 30px 20px; /* mobile*/
   --side-bar-width: 240px;
   --tree-width: 230px;
-  --max-view: 750px;
+  --max-view: 700px;
 }
 a {
   color: inherit;
@@ -126,15 +126,12 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Arial, Helvetica, sans-serif, '微軟正黑體';
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #555555;
 }
 .block {
-  /* box-shadow: 1px 1px 3px gray; */
-  padding: 10px;
-  margin-bottom: 10px;
   position: relative;
   box-sizing: border-box;
 }

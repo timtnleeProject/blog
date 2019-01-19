@@ -4,7 +4,9 @@
       <h3 class="title b">{{p.title}}</h3>
       <div class="prev-area block">
         <div class="plan-text line" v-html="p.content"></div>
-        <div class="inner-block cover"></div>
+        <div class="inner-block line">
+          <div class="cover"></div>
+        </div>
       </div>
       <div class="line">
         <div class="line b">date: {{preview_dates[i]}}</div>
@@ -40,7 +42,7 @@ export default {
   } ,
   methods: {
     linkto(route){
-      this.$router.replace(route)
+      this.$router.push(route)
     }
   }
 }
@@ -51,15 +53,25 @@ export default {
   width: 100%;
   cursor: pointer;
   overflow: hidden;
+  border-bottom: 1px solid lightgray;
+  padding: 10px;
+  margin-bottom: 10px;
 }
+
 .title{
   margin-block-end: 0.6em;
 }
-.prev-area>.cover {
-  background-image: linear-gradient(to top, rgba(255,255,255,0.8),rgba(255,255,255,0.1),rgba(255,255,255,0));
+.prev-area {
+  margin: 10px;
+  padding-right: 20px;
 }
-.preview {
-  border-bottom: 1px solid lightgray;
+.prev-area .cover {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top:0;
+  left: 0;
+  background-image: linear-gradient(to top, rgba(255,255,255,1),rgba(255,255,255,0.6),rgba(255,255,255,0),rgba(255,255,255,0));
 }
 .plan-text {
   overflow: hidden;
