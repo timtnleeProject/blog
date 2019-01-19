@@ -4,7 +4,7 @@
 
 Vuejs static blog
 
-[Demo](https://timtnleeproject.github.io/blog/#/)
+[Demo](https://timtnleeproject.github.io/vuejs-static-blog/#/)
 
 ## Features
 
