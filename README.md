@@ -23,8 +23,8 @@ Vuejs static blog
 ### Usage
 
 1. Fork repository
-2. setting GitHub Pages serve the `gh-pages` branch !["not found"](images/ghpages.jpg)
-3. start setting blog on `gh-pages` branch 
+2. setting GitHub Pages serve the `gh-pages` branch !["not found"](https://timtnleeproject.github.io/blog/images/default/ghpages.JPG)
+3. start setting blog on `gh-pages` branch
 
 ## gh-pages branch
 
