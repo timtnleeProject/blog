@@ -2,7 +2,7 @@
 
 Vuejs 靜態部落格
 
-[Demo](https://timtnleeproject.github.io/blog/#/)
+[Demo](https://timtnleeproject.github.io/vuejs-static-blog/#/)
 
 ## 特色
 
