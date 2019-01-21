@@ -18,6 +18,10 @@ Vuejs 靜態部落格
 
 * master: merge 最近完成版的 dev brach
 * dev: 開發，vue-cli
+  * dev-server: `npm run serve`
+  * build: `npm run build`
+  * deploy to gh-pages: `npm run deploy`
+  * build & deploy: `npm run build&deploy`
 * gh-pages: 放置 build 完成的檔案，並使用 GitHub Pages 服務呈現頁面
 
 ### 使用方法

@@ -265,6 +265,7 @@ export default {
 }
 .selected {
   opacity: 0.2;
+  cursor: default;
 }
 .date-filter {
   display: flex;
