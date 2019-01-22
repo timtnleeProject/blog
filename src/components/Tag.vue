@@ -1,7 +1,7 @@
 <template>
   <div class="tag" @click.stop="linkto()">
      <div class="dot"></div>
-     <div class="tag-name">{{tag}}</div>
+     <div class="tag-name">{{tag}} ({{$store.state.tags_count[tag]}})</div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
       query[this.tag] = true
       this.$router.push({path:'/search',query})
     }
-  }
+  },
 }
 </script>
 

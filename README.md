@@ -11,6 +11,7 @@ Vuejs static blog
 * Directly use github on gh-pages brach to update, add articles and update settings, no need of coding or compiling.
 * Parsing markdwon files as articles.
 * Syntax highlight (Prism)
+* IE NOT SUPPORTED :)
 
 ## Repository
 

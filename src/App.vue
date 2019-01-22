@@ -9,6 +9,7 @@
     <div class="fixed-container bg-dark" :class='{show:show}' @click="closeSideBar">
       <my-sidebar class="sidebar bg-dark"></my-sidebar>
     </div>
+    <div class="blocker" v-if="block"><span>Sorry, this browser is not supported.</span></div>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import MyHeader from './components/Header.vue'
 import MySidebar from './components/Sidebar.vue'
 import MyFooter from './components/Footer.vue'
 import Loading from './components/Loading.vue'
+import compacity from './fkIE'
 import { mapState } from "vuex"
 
 export default {
@@ -25,6 +27,7 @@ export default {
     return {
       show: false,
       loaded: false,
+      block: false
     }
   },
   components: {
@@ -34,6 +37,8 @@ export default {
     Loading
   },
   created(){
+    this.block = !compacity()
+    if(this.block) return
     window.console.log('[Init] Get articles\' previews')
     const setSettings = this.$get('./setting.js').then(res=>{
       this.$store.commit('setSettings', new Function(res)())
@@ -59,9 +64,11 @@ export default {
           const tags = table[r.name].tags
           tags.forEach(tag=>{
             if(!tags_map[tag]){
-              tags_map[tag] = true
+              tags_map[tag] = 1
               tag_lists.push(tag)
-            } 
+            } else {
+              tags_map[tag] += 1
+            }
           })
           return {
             name: r.name,
@@ -72,6 +79,7 @@ export default {
           }
         }))
         this.$store.commit('setTags', tag_lists)
+        this.$store.commit('setTagsCount', tags_map)
         this.loaded = true
       })
     })
@@ -93,13 +101,26 @@ export default {
 }
 </script>
 
-<style>
-:root{
+<style lang="scss">
+:root {
   --pd: 40px 60px 60px 30px; /* content*/
-  --pd-sm : 20px 20px 30px 20px; /* mobile*/
+  --pd-sm: 20px 20px 30px 20px; /* mobile*/
   --side-bar-width: 240px;
   --tree-width: 230px;
   --max-view: 700px;
+}
+.blocker {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  color: white;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 a {
   color: inherit;
@@ -173,6 +194,13 @@ body {
   position: sticky;
   top: 0;
 }
+// .view-fade-enter-active, 
+// .view-fade-leave-active {
+//   transition: opacity .2s ease;
+// }
+// .view-fade-enter, .view-fade-leave-to{
+//   opacity: 0;
+// }
 @media screen and (max-width: 992px){
   .container{
     width: 100%;
