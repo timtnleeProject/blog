@@ -1,6 +1,6 @@
 # Blog
 
-[中文文件](https://timtnleeproject.github.io/blog/#/article/README)
+[中文文件](https://timtnleeproject.github.io/vuejs-static-blog/#/article/README)
 
 Vuejs static blog
 
@@ -11,6 +11,7 @@ Vuejs static blog
 * Directly use github on gh-pages brach to update, add articles and update settings, no need of coding or compiling.
 * Parsing markdwon files as articles.
 * Syntax highlight (Prism)
+* IE NOT SUPPORTED :)
 
 ## Repository
 
@@ -18,6 +19,10 @@ Vuejs static blog
 
 * master: merge recently finished commit on dev brach
 * dev: development using vue-cli
+  * dev-server: `npm run serve`
+  * build: `npm run build`
+  * deploy to gh-pages: `npm run deploy`
+  * build & deploy: `npm run build&deploy`
 * gh-pages: built static files, using GitHub Pages service
 
 ### Usage

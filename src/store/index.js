@@ -8,7 +8,8 @@ const store = new Vuex.Store({
     previews: [],
     tags: [],
     lists: {},
-    settings: {}
+    settings: {},
+    tags_count: {}
   },
   mutations: {
     setPreviews (state, payload) {
@@ -22,6 +23,9 @@ const store = new Vuex.Store({
     },
     setSettings (state, payload) {
       state.settings = payload
+    },
+    setTagsCount(state, payload) {
+      state.tags_count = payload
     }
   }
 })

@@ -1,11 +1,13 @@
 <template>
   <div class="sidebar">
     <div class="title">{{settings.HEADER_TITLE}}</div>
-    <router-link v-for="r in routes" class="tx-light" :class="{active:r.path===$route.path}" :key="r.name" :to="r.path">{{r.name}}</router-link>
+    <router-link v-for="r in routes" class="tx-light" :class="{active:r.path===$route.path}" :key="r.name" :to="r.path">
+      <span class="tx">{{r.name}}</span>
+    </router-link>
   </div> 
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { mapState } from "vuex"
 
@@ -49,13 +51,11 @@ export default Vue.extend({
   opacity: 0.8;
   font-size: 1.1rem;
   text-decoration: none;
+  text-align: left;
 }
-.sidebar>a.active {
-  opacity: 0.8;
+.sidebar>a.active>span {
   border-left: 2px solid;
   padding-left: 5px;
-  font-size: 1.1rem;
-  text-decoration: none;
 }
 .sidebar>a:hover{
   opacity: 1;
@@ -66,6 +66,9 @@ export default Vue.extend({
 @media screen and (max-width: 992px){
   .sidebar{
     padding: 0;
+    text-align: center;
+  }
+  .sidebar>a {
     text-align: center;
   }
 }

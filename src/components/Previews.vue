@@ -57,6 +57,9 @@ export default {
   padding: 10px;
   margin-bottom: 10px;
 }
+.preview:hover {
+  border-bottom: 1px solid gray;
+}
 
 .title{
   margin-block-end: 0.6em;

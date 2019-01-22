@@ -2,15 +2,15 @@
 
 Vuejs 靜態部落格
 
-[Demo](https://timtnleeproject.github.io/blog/#/)
+[Demo](https://timtnleeproject.github.io/vuejs-static-blog/#/)
 
 ## 特色
 
 * 不須額外編譯建置，可直接使用 github 在 gh-pages 分支新增修改文章、部分客製化設定
 * 文章語法使用 markdown
 * Syntax highlight (Prism)
-* 我覺得版面還不錯
-* 第五點我還沒想到
+* 不支援IE :)
+* 第五點還沒想到
 
 ## Repository
 
@@ -18,12 +18,16 @@ Vuejs 靜態部落格
 
 * master: merge 最近完成版的 dev brach
 * dev: 開發，vue-cli
+  * dev-server: `npm run serve`
+  * build: `npm run build`
+  * deploy to gh-pages: `npm run deploy`
+  * build & deploy: `npm run build&deploy`
 * gh-pages: 放置 build 完成的檔案，並使用 GitHub Pages 服務呈現頁面
 
 ### 使用方法
 
 1. Clone repository
-2. repository 設定使用 `gh-pages` 分支呈現 GitHub Pages 頁面!["not found"](https://timtnleeproject.github.io/blog/images/default/ghpages.JPG)
+2. repository 設定使用 `gh-pages` 分支呈現 GitHub Pages 頁面!["not found"](https://timtnleeproject.github.io/vuejs-static-blog/images/default/ghpages.JPG)
 3. 開始使用 gh-pages 設定 blog
 
 ## gh-pages 結構

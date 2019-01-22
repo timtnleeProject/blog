@@ -32,7 +32,7 @@
             @click="unselect_tag(tag)"
           >
             <div class="dot"></div>
-            <div class="tag-name">{{tag}}</div>
+            <div class="tag-name">{{tag}} ({{tags_count[tag]}})</div>
             <img class="cancel" src="icons/cancel.png" alt="not found">
           </div>
         </div>
@@ -46,11 +46,12 @@
             :class="{selected:selected_tags[tag]}"
           >
             <div class="dot"></div>
-            <div class="tag-name">{{tag}}</div>
+            <div class="tag-name">{{tag}} ({{tags_count[tag]}})</div>
           </div>
         </div>
       </div>
       <h3 class="h">Articles</h3>
+      <div class="ept-block" v-if="filtered_previews.length===0">No matching article</div>
       <previews :previews="filtered_previews" :max="filtered_previews.length"></previews>
     </div>
   </div>
@@ -120,6 +121,7 @@ export default {
     },
     ...mapState({
       previews: "previews",
+      tags_count: "tags_count",
       tags: "tags"
     })
   },
@@ -254,6 +256,10 @@ export default {
   border: 1px solid var(--color-sub);
   box-shadow: inset 1px 1px 3px #cccccc;
 }
+.ept-block {
+  padding: 10px;
+  color: main;
+}
 .search-input:focus{
   outline: none;
 }
@@ -265,6 +271,7 @@ export default {
 }
 .selected {
   opacity: 0.2;
+  cursor: default;
 }
 .date-filter {
   display: flex;

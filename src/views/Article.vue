@@ -43,7 +43,6 @@ export default {
       loaded: false,
       scrollY: 0,
       expand_all: false,
-      sc_offset: 80, //scroll offet of scroll to
       h1idx: -1,
       h2idx: -1,
       h3idx: -1,
@@ -88,18 +87,19 @@ export default {
     calcScrollPos() {
       if(this.tree.length===0) return
       
+      let sc_offset = this.getScrollOffset()
       let h1top,h2top,h3top
       let h1idx=-1,h2idx =-1,h3idx = -1
-      
-      h1top = this.tree.map(h=>h.link.offsetTop)
+      const mappingTop = (h) => h.link.offsetTop - sc_offset
+      h1top = this.tree.map(mappingTop)
       h1idx = this.getScrollIdx(h1top)
       if(h1idx!=-1 && this.tree[h1idx].leaves.length>0) {
-        h2top = this.tree[h1idx].leaves.map(h=>h.link.offsetTop)
+        h2top = this.tree[h1idx].leaves.map(mappingTop)
         h2idx = this.getScrollIdx(h2top)
       }
       if(h2idx!=-1) {
         const leaf = this.tree[h1idx].leaves[h2idx]
-        h3top = leaf.leaves.map(h=>h.link.offsetTop)
+        h3top = leaf.leaves.map(mappingTop)
         h3idx = this.getScrollIdx(h3top)
       }
       this.h1idx = h1idx
@@ -107,8 +107,11 @@ export default {
       this.h3idx = h3idx
     },
     getScrollIdx(tops){
-      let idx = tops.reduce((acc, curr) => acc + (this.scrollY>=curr) , 0)
+      let idx = tops.reduce((acc, curr) => acc + (this.scrollY+1>=curr) , 0)
       return Math.max(idx-1,0)
+    },
+    getScrollOffset() {
+      return document.querySelector('.my-header').getBoundingClientRect().height
     },
     setLinksAttr(){
       this.$el.querySelectorAll('a').forEach(el=>{
@@ -155,7 +158,8 @@ export default {
       window.console.log('[App] generate menu.')
     },
     scrollTo(el){
-      window.scrollTo(0,el.offsetTop - this.sc_offset)
+      let sc_offset = this.getScrollOffset()
+      window.scrollTo(0,el.offsetTop - sc_offset)
       this.scroll()
     },
     toggleMenu(e){
