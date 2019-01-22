@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <my-header class="my-header bg-main tx-light" @toggleBar="toggleSideBar"></my-header>
-    <div class="container">
+    <div class="container" :style="stickyPolyfill()">
       <loading :loaded="loaded"></loading>
       <router-view class="content"></router-view>
       <my-footer></my-footer>
@@ -9,7 +9,6 @@
     <div class="fixed-container bg-dark" :class='{show:show}' @click="closeSideBar">
       <my-sidebar class="sidebar bg-dark"></my-sidebar>
     </div>
-    <div class="blocker" v-if="block"><span>Sorry, this browser is not supported.</span></div>
   </div>
 </template>
 
@@ -18,7 +17,6 @@ import MyHeader from './components/Header.vue'
 import MySidebar from './components/Sidebar.vue'
 import MyFooter from './components/Footer.vue'
 import Loading from './components/Loading.vue'
-import compacity from './fkIE'
 import { mapState } from "vuex"
 
 export default {
@@ -27,7 +25,6 @@ export default {
     return {
       show: false,
       loaded: false,
-      block: false
     }
   },
   components: {
@@ -37,8 +34,6 @@ export default {
     Loading
   },
   created(){
-    this.block = !compacity()
-    if(this.block) return
     window.console.log('[Init] Get articles\' previews')
     const setSettings = this.$get('./setting.js').then(res=>{
       this.$store.commit('setSettings', new Function(res)())
@@ -91,6 +86,9 @@ export default {
     })
   },
   methods: {
+    stickyPolyfill() {
+      return ((!window.CSS||!CSS.supports("position", "sticky"))?{marginTop: '60px'}:{}) 
+    },
     toggleSideBar(){
       this.show = !this.show
     },
@@ -102,26 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  --pd: 40px 60px 60px 30px; /* content*/
-  --pd-sm: 20px 20px 30px 20px; /* mobile*/
-  --side-bar-width: 240px;
-  --tree-width: 230px;
-  --max-view: 700px;
-}
-.blocker {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: black;
-  color: white;
-  z-index: 2000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@import "Style";
 a {
   color: inherit;
 }
@@ -147,7 +126,7 @@ body {
 }
 
 #app {
-  font-family: var(--font-family);
+  font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #555555;
@@ -164,19 +143,19 @@ body {
   left: 0;
 }
 .container{
-  margin-right:var(--side-bar-width);
+  margin-right:$side-bar-width;
 }
 .content{
   width: 100%;
   /* overflow-x: scroll; */
   box-sizing: border-box;
-  padding: var(--pd);
+  padding: $pd;
 }
 .fixed-container {
   position: fixed;
   top: 0;
   right: 0;
-  width: var(--side-bar-width);
+  width: $side-bar-width;
   height: 100vh;
 }
 .sidebar{
@@ -190,6 +169,7 @@ body {
   color: white;
 }
 .my-header {
+  position: fixed;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -208,7 +188,7 @@ body {
     margin: 0px;
   } 
   .content {
-    padding: var(--pd-sm);
+    padding: $pd-sm;
   }
   .fixed-container{
     transition: 0.4s;

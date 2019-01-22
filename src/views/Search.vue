@@ -193,6 +193,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'Style';
 .search-bar {
   position: fixed;
   margin: 0;
@@ -253,7 +254,7 @@ export default {
   max-width: 180px;
   padding: 6px 1.5rem 6px 6px;
   border-radius: 5px;
-  border: 1px solid var(--color-sub);
+  border: 1px solid $color-sub;
   box-shadow: inset 1px 1px 3px #cccccc;
 }
 .ept-block {
