@@ -197,7 +197,7 @@ npm run deploy
 build + deploy
 
 ```bash
-npm run build&deploy
+npm run auto
 ```
 
 ### color theme

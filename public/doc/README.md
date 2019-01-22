@@ -196,7 +196,7 @@ npm run deploy
 編譯 + 部署
 
 ```bash
-npm run build&deploy
+npm run auto
 ```
 
 ### 色系
