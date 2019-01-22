@@ -9,7 +9,7 @@ Vuejs 靜態部落格
 * 不須額外編譯建置，可直接使用 github 在 gh-pages 分支新增修改文章、部分客製化設定
 * 文章語法使用 markdown
 * Syntax highlight (Prism)
-* 不支援IE :)
+* 支援IE
 * 第五點還沒想到
 
 ## Repository
@@ -157,21 +157,6 @@ CONTACT: [ //About Page's icons
 
 記得在 `icons` 資料夾上傳對應的圖示
 
-### 色系
-
-可在 `css/theme.css` 中更改 css 變數
-
-```css
-:root {
-  --color-dark: #1e2022;
-  --color-main: #52616a;
-  --color-sub: #c9d6de;
-  --color-light: #f0f5f9;
-  --color-special: #0099CC;
-  --font-family:  'Avenir', Arial,'微軟正黑體',Helvetica, sans-serif;
-}
-```
-
 ## Syntax hightlight
 
 使用 Prism, 預設只有 js, css, html, python
@@ -179,3 +164,56 @@ CONTACT: [ //About Page's icons
 如需其他語言樣式，請至 Prism 網站下載相對應的 js, css 檔案
 
 分別放至 `js/prism.js`, `css/prism.css`
+
+## 開發模式 & 編譯
+
+基本上文章的編輯都可以在 `gh-pages` 分支編輯就可以了
+
+但是你也可以選擇使用正常的開發流程:
+
+切換至 `dev`/`master` 分支
+
+> 注意，gh-pages 的 `/doc` 內的文件記得同步到 dev/master 分支的 `/public/doc` (看你要用哪個分支開發)，確保 dev 或 master 分支內的文章是最新的，以免在部署時編譯到以前版本的文章
+
+啟動 webpack dev server
+
+```bash
+npm run serve
+```
+
+編譯靜態檔案至 `/dist` 資料夾
+
+```bash
+npm run build
+```
+
+提交部署至 `gh-pages` 分支
+
+```bash
+npm run deploy
+```
+
+編譯 + 部署
+
+```bash
+npm run build&deploy
+```
+
+### 色系
+
+在 `/src/styles/theme.scss` 中有 scss 變數可以調整
+
+```scss
+$color-dark: #1e2022;
+$color-main: #52616a;
+$color-sub: #c9d6de;
+$color-light: #f0f5f9;
+$color-special: #0099CC;
+$font-family:  'Avenir', Arial,'微軟正黑體',Helvetica, sans-serif;
+
+$pd: 40px 60px 60px 30px; /* content*/
+$pd-sm: 20px 20px 30px 20px; /* mobile*/
+$side-bar-width: 240px;
+$tree-width: 230px;
+$max-view: 700px;
+```

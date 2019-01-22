@@ -5,8 +5,10 @@ import Constant from './constant'
 //instances
 import router from './router'
 import store from './store/index'
-//style
+//global style
 import './styles/el.scss'
+//polyfill
+import './polyfill'
 
 Vue.config.productionTip = false
 

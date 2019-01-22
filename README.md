@@ -11,7 +11,7 @@ Vuejs static blog
 * Directly use github on gh-pages brach to update, add articles and update settings, no need of coding or compiling.
 * Parsing markdwon files as articles.
 * Syntax highlight (Prism)
-* IE NOT SUPPORTED :)
+* IE Supported
 
 ## Repository
 
@@ -29,7 +29,7 @@ Vuejs static blog
 
 1. Clone repository
 2. setting GitHub Pages serve the `gh-pages` branch !["not found"](https://raw.githubusercontent.com/timtnleeProject/vuejs-static-blog/master/public/images/default/ghpages.JPG)
-3. start setting blog on `gh-pages` branch
+3. start writing your blog!
 
 ## gh-pages branch
 
@@ -158,21 +158,6 @@ CONTACT: [ //About Page's icons
 
 make sure you upload the right icon at `icons` folder
 
-### color theme
-
-change the css variables in `css/theme.css`
-
-```css
-:root {
-  --color-dark: #1e2022;
-  --color-main: #52616a;
-  --color-sub: #c9d6de;
-  --color-light: #f0f5f9;
-  --color-special: #0099CC;
-  --font-family:  'Avenir', Arial,'微軟正黑體',Helvetica, sans-serif;
-}
-```
-
 ## Syntax hightlight
 
 This blog is using Prism, defult languages are js, css, html and python
@@ -180,3 +165,56 @@ This blog is using Prism, defult languages are js, css, html and python
 if you need more languages support, please go visit Prism's website and download the corresponding js, css files
 
 put the files to `js/prism.js` and `css/prism.css`
+
+## develope & compile
+
+You can only use `gh-pages` to update/add articles or change some basic settings.
+
+Or you can use the normal work flow to develope:
+
+checkout to `dev`/`master` branch
+
+> Notice, remember to synchronize articles that in gh-pages brach's `/doc` to dev/master brach's `/public/doc` (depand on which branch you use), make sure that articles in dev or master branch are the latest version to avoid overwrite when deploy.
+
+webpack dev server
+
+```bash
+npm run serve
+```
+
+build to `/dist` folder
+
+```bash
+npm run build
+```
+
+deploy to `gh-pages` branch
+
+```bash
+npm run deploy
+```
+
+build + deploy
+
+```bash
+npm run build&deploy
+```
+
+### color theme
+
+There's some scss variables in `/src/styles/theme.scss` that you can change.
+
+```scss
+$color-dark: #1e2022;
+$color-main: #52616a;
+$color-sub: #c9d6de;
+$color-light: #f0f5f9;
+$color-special: #0099CC;
+$font-family:  'Avenir', Arial,'微軟正黑體',Helvetica, sans-serif;
+
+$pd: 40px 60px 60px 30px; /* content*/
+$pd-sm: 20px 20px 30px 20px; /* mobile*/
+$side-bar-width: 240px;
+$tree-width: 230px;
+$max-view: 700px;
+```

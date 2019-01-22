@@ -171,10 +171,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'Style';
 .article-wrap {
   overflow-x: scroll;
   display: block;
-  margin-left:var(--tree-width);
+  margin-left:$tree-width;
 }
 .tree {
   position: fixed;
@@ -184,7 +185,7 @@ export default {
   z-index: 100;
   max-height: 80vh;
   box-sizing: border-box;
-  width:var(--tree-width);
+  width: $tree-width;
   overflow-y: scroll;
   overflow-x: hidden;
 }
