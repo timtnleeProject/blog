@@ -149,7 +149,7 @@ body {
   width: 100%;
   /* overflow-x: scroll; */
   box-sizing: border-box;
-  padding: $pd;
+  // padding: $pd;
 }
 .fixed-container {
   position: fixed;
@@ -186,9 +186,6 @@ body {
     width: 100%;
     overflow-x: hidden;
     margin: 0px;
-  } 
-  .content {
-    padding: $pd-sm;
   }
   .fixed-container{
     transition: 0.4s;

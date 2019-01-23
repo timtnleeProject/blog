@@ -93,9 +93,15 @@ h6 {
 .center-max-view {
   display: flex;
   justify-content: center;
+  padding: $pd;
   >div {
     width: 100%;
     max-width: $max-view;
+  }
+}
+@media screen and (max-width:992px) {
+  .center-max-view {
+    padding: $pd-sm;
   }
 }
 .flex-col {
