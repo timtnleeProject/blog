@@ -46,17 +46,16 @@ export default {
       const tags_map = {}
       const tag_lists = []
       const articles_names = this.lists.articles.map(a=>{ 
-        table[a.name] = {//transform mapping table
-          date: a.date,
-          tags: a.tags
-        }
+        table[a.name] = a
         return a.name
       })
       this.$getArticles(articles_names).then(raws=>{
         this.$store.commit('setPreviews',raws.map(r=>{
           const content_ary = r.content.split('\n').filter(str=>str.trim()!="")
           const paragraph =  content_ary.slice(1, 1+this.settings.PREVIEW_LINE).join('\n')
-          const tags = table[r.name].tags
+          const metadata = table[r.name]
+          const tags = metadata.tags
+          //sum tags
           tags.forEach(tag=>{
             if(!tags_map[tag]){
               tags_map[tag] = 1
@@ -67,9 +66,10 @@ export default {
           })
           return {
             name: r.name,
-            content: this.$markdown.render(paragraph)+ '</br>',
-            date: new Date(table[r.name].date),
+            pinned: metadata.pinned,
             tags: tags.sort(),
+            content: this.$markdown.render(paragraph)+ '</br>',
+            date: new Date(metadata.date),
             title: content_ary[0].slice(-(content_ary[0].length-2))
           }
         }))

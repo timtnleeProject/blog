@@ -97,6 +97,7 @@ after you add a markdown file to `/doc` folder, don't forget to add article info
 {
   "name":"ex2", // markdown file's name (exculde '.md' file type)
   "date":"2019/1/14", // date of the article
+  "pinned": true, // pinned article
   "tags":["Mental Health"] // tags of the article
 }
 ```

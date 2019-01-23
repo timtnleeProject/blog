@@ -19,6 +19,7 @@
     {
       "name":"README",
       "date":"2019/1/16",
+      "pinned": true,
       "tags":["document","blog"]
     },
     {

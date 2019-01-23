@@ -16,6 +16,7 @@
     <div class="center-max-view">
       <div class="article-wrap">
         <div class="tags-container">
+          <img v-if="pinned" src="icons/pinned.png" alt="" class="pinned">
           <div>tags: </div>
           <tag v-for="tag in tags" :key="tag" :tag="tag"></tag>
         </div>
@@ -71,9 +72,14 @@ export default {
     })
   },
   computed: {
+    metadata() {
+      return this.previews.find(prev=>prev.name===this.name)
+    },
     tags() {
-      const article = this.previews.find(prev=>prev.name===this.name)
-      return (article)?article.tags:[]
+      return (this.metadata)?this.metadata.tags:[]
+    },
+    pinned() {
+      return (this.metadata)?this.metadata.pinned:false
     },
     ...mapState({
       previews: 'previews'

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="(p,i) in previews" :key="`preview${i}`" class="preview block" @click="linkto({path:`/article/${p.name}`})">
-      <h3 class="title b">{{p.title}}</h3>
+    <div v-for="(p,i) in previews_cut" :key="`preview${i}`" class="preview block" @click="linkto({path:`/article/${p.name}`})">
+      <h3 class="title b">{{p.title}}<img v-if="p.pinned" class="pinned" src="icons/pinned.png"></h3>
       <div class="prev-area block">
         <div class="plan-text line" v-html="p.content"></div>
         <div class="inner-block line">
@@ -34,6 +34,9 @@ export default {
         const d = p.date
         return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`
       }):[]
+    },
+    previews_cut() {
+      return this.previews.slice(0,this.max)
     },
     ...mapState({
       lists:'lists',
