@@ -103,6 +103,11 @@ h6 {
 }
 
 /* tag*/
+.pinned{
+  width: 0.86rem;
+  opacity: 0.5;
+  margin-left: 3px;
+}
 .tags-container {
   display: flex;
   flex-wrap: wrap;
