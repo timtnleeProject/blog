@@ -96,6 +96,7 @@ setting.js
 {
   "name":"ex2", //文章檔案名稱
   "date":"2019/1/14", //文章日期
+  "pinned": true, //將文章設為置頂
   "tags":["Mental Health"] //文章標籤
 }
 ```
