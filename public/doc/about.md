@@ -1,8 +1,10 @@
 # About me
 
-I am a programmer and I love to write some frontend stuffs like web components and javascript libraries and found it interesting putting my works on npm to share with others.
+I am a programmer and I love to write some frontend stuff like web components and javascript libraries and found it interesting putting my works on NPM to share with others.
 
-I'm enjoying writing and design applications or libraries, but unfortunately I recent work dosen't have much chance to do these. So most of my works are my side projects.
+I'm enjoying writing and design applications or libraries, but unfortunately, my recent work doesn't have much chance to do these. So most of my works are my side projects.
+
+On this blog, I try to write some articles about my life and maybe some technical topics relative to my work. Because I'm really bad at organizing my knowledge or putting my experience to words, doing this might help me clean up my thoughts and improve my writing skill.
 
 ## skills
 

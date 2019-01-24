@@ -3,6 +3,11 @@
 .article{
   ul {
     padding-inline-start: 2em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  li {
+    margin-bottom: 2px;
   }
   blockquote {
     background-color: #eeeeee;

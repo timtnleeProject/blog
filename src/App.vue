@@ -76,6 +76,8 @@ export default {
         this.$store.commit('setTags', tag_lists)
         this.$store.commit('setTagsCount', tags_map)
         this.loaded = true
+      }).catch(e=>{
+        window.console.error(e)
       })
     })
   },

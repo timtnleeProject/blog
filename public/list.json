@@ -2,6 +2,11 @@
   "about":"about",
   "articles": [
     {
+      "name": "YeLiu",
+      "date": "2019/1/24",
+      "tags": ["trip"]
+    },
+    {
       "name":"example",
       "date": "2019/1/16",
       "tags":["project"]

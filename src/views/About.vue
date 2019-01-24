@@ -56,6 +56,7 @@ export default {
 <style scoped>
 .contact {
   margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
