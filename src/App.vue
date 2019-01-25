@@ -64,7 +64,7 @@ export default {
               tags_map[tag] += 1
             }
           })
-          return {
+          return { // previews
             name: r.name,
             pinned: metadata.pinned,
             image: metadata.image,

@@ -34,7 +34,8 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
+@import 'Style';
 .sidebar {
   padding-left: 16px;
   color: white;
