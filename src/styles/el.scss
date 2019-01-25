@@ -10,9 +10,9 @@
     margin-bottom: 2px;
   }
   blockquote {
-    background-color: #eeeeee;
+    background-color: $color-light;
     color: inherit;
-    border-left: 3px solid gray;
+    border-left: 3px solid $color-sub;
     font-style: italic;
     margin: 0;
     border-radius: 2px;
@@ -42,11 +42,11 @@
     border-bottom: 1px solid #dddddd;
     padding-bottom: 5px;
   }
-  *:not(pre)>code{
+  *:not(pre)>code{ // `` in markdown file
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     border-radius: 3px;
-    background-color: #dddddd;
-    font-size: 0.86em;
+    background-color: #eeeeee;
+    font-size: 1em;
     padding: 3px;
   }
   table {
@@ -104,7 +104,7 @@ h6 {
     max-width: $max-view;
   }
 }
-@media screen and (max-width:992px) {
+@media screen and (max-width:$lg) {
   .center-max-view {
     padding: $pd-sm;
   }

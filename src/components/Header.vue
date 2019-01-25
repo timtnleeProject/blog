@@ -59,7 +59,7 @@ export default {
   padding: 5px;
   font-size: 1.1rem;
 }
-@media screen and (max-width: 992px){
+@media screen and (max-width: $lg){
   .header {
     height: 50px;
     display: flex;

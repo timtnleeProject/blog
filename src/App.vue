@@ -67,6 +67,7 @@ export default {
           return {
             name: r.name,
             pinned: metadata.pinned,
+            image: metadata.image,
             tags: tags.sort(),
             content: this.$markdown.render(paragraph)+ '</br>',
             date: new Date(metadata.date),
@@ -115,13 +116,13 @@ body {
    -webkit-tap-highlight-color:rgba(255,0,0,0);
 }
 /* root font size*/
-@media screen and (max-width:992px) and (min-width: 768px){
+@media screen and (max-width:$lg) and (min-width: $md){
   body {
     font-size: 15px;
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: $lg) {
   body {
     font-size: 16px;
   }
@@ -183,7 +184,7 @@ body {
 // .view-fade-enter, .view-fade-leave-to{
 //   opacity: 0;
 // }
-@media screen and (max-width: 992px){
+@media screen and (max-width: $lg){
   .container{
     width: 100%;
     overflow-x: hidden;

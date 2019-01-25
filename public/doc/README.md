@@ -97,6 +97,7 @@ setting.js
   "name":"ex2", //文章檔案名稱
   "date":"2019/1/14", //文章日期
   "pinned": true, //將文章設為置頂
+  "image": "images/<YOUR_IMAGE>", //path of preview image
   "tags":["Mental Health"] //文章標籤
 }
 ```
@@ -129,11 +130,14 @@ setting.js
 
 ```javascript
 return {
-  HEADER_TITLE: "This is Blog's name",
-  HEADER_SUBTITLE: "subtitle",
-  FOOTER_TEXT: "footer text",
-  BANNER_IMAGE: "images/default/bird on water.jpg", //首頁圖片路徑
-  HOME_ARTICLE_TEXT: "Newest articles",
+  HEADER_TITLE: "Timtnlee's Blog",
+  HEADER_SUBTITLE: "",
+  FOOTER_TEXT: "litingen1995@gmail.com",
+  HOME_PINNED_ARTICLE_TEXT: "Pinned articles",
+  HOME_ARTICLE_TEXT: "Latest articles",
+  BANNER_IMAGE: "images/default/aurora.jpg", // Home page picture
+  DEFAULT_PREVIEW_IMAGE: "images/default/aurora.jpg", //預設預覽圖
+  QUOTE: "\"Be better today than yesterday.\"",
   HOME_MAX_PREVIEW : 10, //首頁顯示文章數量
   PREVIEW_LINE : 1, //文章預覽段落數
   CONTACT: [ //About Page's icons

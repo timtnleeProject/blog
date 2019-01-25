@@ -213,7 +213,7 @@ export default {
   bottom: 20px;
   right: 20px;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: $md){
   .tree {
     display: none;
     background-color: white;

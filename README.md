@@ -98,6 +98,7 @@ after you add a markdown file to `/doc` folder, don't forget to add article info
   "name":"ex2", // markdown file's name (exculde '.md' file type)
   "date":"2019/1/14", // date of the article
   "pinned": true, // pinned article
+  "image": "images/<YOUR_IMAGE>", //path of preview image
   "tags":["Mental Health"] // tags of the article
 }
 ```
@@ -135,6 +136,7 @@ return {
   FOOTER_TEXT: "footer text",
   HOME_ARTICLE_TEXT: "Newest articles",
   BANNER_IMAGE: "images/default/bird on water.jpg", //path of the home page image
+  DEFAULT_PREVIEW_IMAGE: "images/default/aurora.jpg", // default path of preview image
   HOME_MAX_PREVIEW : 10, //home page's articles number
   PREVIEW_LINE : 1, //number of paragraph for article's preview
   CONTACT: [ //About Page's icons

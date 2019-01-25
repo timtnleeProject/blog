@@ -36,12 +36,12 @@ export default {
   /* padding: 20px;
   font-size: 1.5rem; */
 }
-@media screen and (max-width:992px){
+@media screen and (max-width: $lg){
   .banner .quote {
     font-size: 1rem;
   }
 }
-@media screen and (max-width:992px) and (min-width: 768px){
+@media screen and (max-width: $lg) and (min-width: $md){
   .banner .quote {
     font-size: 1.2rem;
   }

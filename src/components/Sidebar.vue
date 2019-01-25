@@ -63,7 +63,7 @@ export default Vue.extend({
 .sidebar>*+*{
   margin-top: 1rem;
 }
-@media screen and (max-width: 992px){
+@media screen and (max-width: $lg){
   .sidebar{
     padding: 0;
     text-align: center;
