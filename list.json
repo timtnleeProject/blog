@@ -14,13 +14,15 @@
     {
       "name":"ex2",
       "date":"2019/1/14",
-      "tags":["Mental Health"]
+      "tags":["Mental Health"],
+      "image": "https://cdn-images-1.medium.com/max/1600/1*_NkF5bB4GXVZ93RuhMWE4g.jpeg"
     },
     {
       "name":"README",
       "date":"2019/1/16",
       "pinned": true,
-      "tags":["document","blog"]
+      "tags":["document","blog"],
+      "image":"images/default/ghpages.JPG"
     },
     {
       "name":"investment",

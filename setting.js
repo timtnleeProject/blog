@@ -1,11 +1,12 @@
 return {
-  HEADER_TITLE: "This is Blog's name",
-  HEADER_SUBTITLE: "subtitle",
-  FOOTER_TEXT: "footer text",
+  HEADER_TITLE: "Timtnlee's Blog",
+  HEADER_SUBTITLE: "",
+  FOOTER_TEXT: "litingen1995@gmail.com",
   HOME_PINNED_ARTICLE_TEXT: "Pinned articles",
   HOME_ARTICLE_TEXT: "Latest articles",
-  BANNER_IMAGE: "images/default/bird on water.jpg",
-  QUOTE: "\"An apple a day, keep the doctor away.\"",
+  BANNER_IMAGE: "images/default/aurora.jpg",
+  DEFAULT_PREVIEW_IMAGE: "images/default/aurora.jpg",
+  QUOTE: "\"Be better today than yesterday.\"",
   HOME_MAX_PREVIEW : 10, //首頁顯示文章數量
   PREVIEW_LINE : 1, //文章預覽段落數
   CONTACT: [ //About Page's icons
