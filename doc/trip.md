@@ -2,8 +2,6 @@
 
 It’s official, Amazon has finally confirmed its plan to split its new headquarters called HQ2 in the media blitz over the past 14 months, where Long Island and Crystal City (“National Landing”) share the honor and catastrophic rise in rent and real estate prices.long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph long paragraph.
 
-!["not found"](images/default/bird%20on%20water.jpg)
-
 ## H2
 
 ```python
