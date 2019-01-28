@@ -8,6 +8,7 @@
     </div>
     <div class="fixed-container bg-dark" :class='{show:show}' @click="closeSideBar">
       <my-sidebar class="sidebar bg-dark"></my-sidebar>
+      <a class="bottom bandage" href="https://github.com/timtnleeProject/vuejs-static-blog" target="_blank">vuejs-static-blog</a>
     </div>
   </div>
 </template>
@@ -176,6 +177,21 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+.bottom {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.bandage {
+  display: inline-block;
+  padding: 3px;
+  font-size: 0.86rem;
+  background-color: $color-main;
+  color: white;
+  border: 1px solid $color-sub;
+  border-radius: 3px;
+  opacity: 0.8;
 }
 // .view-fade-enter-active, 
 // .view-fade-leave-active {
