@@ -1,6 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="title">{{settings.HEADER_TITLE}}</div>
+    <small class="indent">{{settings.SIDEBAR_TEXT}}</small>
     <router-link v-for="r in routes" class="tx-light" :class="{active:r.path===$route.path}" :key="r.name" :to="r.path">
       <span class="tx">{{r.name}}</span>
     </router-link>
@@ -64,6 +65,10 @@ export default Vue.extend({
   color: white;
   padding-bottom: 5px;
   font-size: 1.3rem;
+}
+.indent {
+  padding-left: 0.8rem;
+  opacity: 0.6;
 }
 @media screen and (max-width: $lg){
   .sidebar{

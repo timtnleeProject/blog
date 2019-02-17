@@ -187,11 +187,8 @@ body {
   display: inline-block;
   padding: 3px;
   font-size: 0.86rem;
-  background-color: $color-main;
   color: white;
-  border: 1px solid $color-sub;
-  border-radius: 3px;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 // .view-fade-enter-active, 
 // .view-fade-leave-active {
