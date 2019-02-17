@@ -2,22 +2,6 @@
   "about":"about",
   "articles": [
     {
-      "name":"example",
-      "date": "2019/1/16",
-      "tags":["project"]
-    },
-    {
-      "name":"trip",
-      "date": "2019/1/10",
-      "tags":["project","life"]
-    },
-    {
-      "name":"ex2",
-      "date":"2019/1/14",
-      "tags":["Mental Health"],
-      "image": "https://cdn-images-1.medium.com/max/1600/1*_NkF5bB4GXVZ93RuhMWE4g.jpeg"
-    },
-    {
       "name":"README",
       "date":"2019/1/16",
       "pinned": true,
@@ -25,9 +9,10 @@
       "image":"images/default/ghpages.JPG"
     },
     {
-      "name":"investment",
-      "date":"2019/1/18",
-      "tags":["news","finance"]
+      "name":"期貨",
+      "date":"2019/2/9",
+      "tags":["投資"],
+      "image": "images/futures/investment.jpg"
     }
   ]
 }
