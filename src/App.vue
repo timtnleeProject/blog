@@ -55,7 +55,7 @@ export default {
           const content_ary = r.content.split('\n').filter(str=>str.trim()!="")
           const paragraph =  content_ary.slice(1, 1+this.settings.PREVIEW_LINE).join('\n')
           const metadata = table[r.name]
-          const tags = metadata.tags
+          const tags = metadata.tags||[]
           //sum tags
           tags.forEach(tag=>{
             if(!tags_map[tag]){

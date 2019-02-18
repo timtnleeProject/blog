@@ -3,7 +3,9 @@
   "articles": [
     {
       "name":"mongodb windows",
-      "tags": ["mongoDB"]
+      "tags": ["mongoDB"],
+      "date":"2019/2/18",
+      "image": "images/mongodb/mongodb.jpg"
     },
     {
       "name":"README",

@@ -2,12 +2,13 @@
   <div @click="toggleMenu($event)">
     <loading :loaded="loaded"></loading>
     <div class="tree" :class="{show:show}">
+      <ul class="expand-all" @click="expandToggle">{{(expand_all)?'expanded':'closed'}}</ul>
       <ul v-for="(h1, j) in tree" :key="`h1${h1.name}`" class="h1-list">
           <li :class="{on:j===h1idx}" @click="scrollTo(h1.link)">{{h1.name}}</li>
           <ul v-for="(h2, i) in h1.leaves" :key="`h2${h2.name}`" class="h2-list">
             <li :class="{on:i===h2idx}" @click="scrollTo(h2.link)">{{h2.name}}</li>
             <ul v-for="(h3,k) in h2.leaves" :key="`h3${h3.name}`" class="h3-list" :class="{expand:expand_all || i===h2idx}">
-              <li :class="{on:k===h3idx}" @click="scrollTo(h3.link)">{{h3.name}}</li>
+              <li :class="{on:i===h2idx&&k===h3idx}" @click="scrollTo(h3.link)">{{h3.name}}</li>
             </ul>
         </ul>
       </ul>
@@ -171,6 +172,9 @@ export default {
     toggleMenu(e){
       if(this.$el.querySelector('.tree').contains(e.target)) return
       if(this.show) this.show=false
+    },
+    expandToggle() {
+      this.expand_all = !this.expand_all
     }
   }
 }
@@ -235,7 +239,11 @@ export default {
     margin-left: 0px;
   }
 }
-
+.expand-all {
+  color: gray;
+  cursor: pointer;
+  opacity: 0.7;
+}
 .h3-list {
   display: none;
 }
@@ -246,6 +254,7 @@ export default {
   font-weight: bold;
   color: black;
 }
+
 .tree {
   ul,li {
     font-size: 0.86rem;
