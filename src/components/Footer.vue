@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer bg-sub tx-light">
+  <footer class="footer bg-sub tx-dark">
     <div class="title">{{settings.FOOTER_TEXT}}</div>
   </footer>
 </template>
