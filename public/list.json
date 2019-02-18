@@ -5,6 +5,7 @@
       "name":"mongodb windows",
       "tags": ["mongoDB"],
       "date":"2019/2/18",
+      "pinned": true,
       "image": "images/mongodb/mongodb.jpg"
     },
     {
