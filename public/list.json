@@ -2,6 +2,10 @@
   "about":"about",
   "articles": [
     {
+      "name":"mongodb windows",
+      "tags": ["mongoDB"]
+    },
+    {
       "name":"README",
       "date":"2019/1/16",
       "pinned": true,
