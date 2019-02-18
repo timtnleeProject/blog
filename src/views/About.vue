@@ -40,10 +40,19 @@ export default {
       if(this.lists.about) {
         this.$get(`doc/${this.lists.about}.md`).then(res=>{
           this.content = this.$markdown.render(res)
-          this.loaded = true
+          this.$nextTick(()=>{
+            this.setLinksAttr()
+            this.loaded = true
+          })
         })
       }
-    }
+    },
+    setLinksAttr(){
+      this.$el.querySelectorAll('a').forEach(el=>{
+        el.setAttribute('target','_blank')
+      })
+      window.console.log('[App] set links attr.')
+    },
   },
   watch: {
     lists () {

@@ -23,6 +23,7 @@ export default {
   height: auto;
   max-height: 400px;
   position: relative;
+  background-color: $color-dark;
 }
 .banner img{
   width: 100%;
