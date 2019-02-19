@@ -31,6 +31,11 @@ md \data\db
 
 執行 mongod.exe 如果正常運行，便可開啟 mongo.exe 來下指令操作了
 
+可以看到 mongoDB server 正在運行
+![""](images/mongodb/service.jpg)
+
+發現重開機的時候 mongoDB 會自己啟動，要如何設定之後再來研究好了
+
 ## 基本指令
 
 指令在[這裡][3]有教學，這邊就先試一些簡單的指令。

@@ -7,7 +7,7 @@ return {
   BANNER_IMAGE: "images/default/aurora.jpg",
   SIDEBAR_TEXT: "My personal static blog.",
   DEFAULT_PREVIEW_IMAGE: "images/default/aurora.jpg",
-  QUOTE: "\"Be better today than yesterday.\"",
+  QUOTE: "Front-end developer\n\"Be better today than yesterday.\"",
   HOME_MAX_PREVIEW : 10, //首頁顯示文章數量
   PREVIEW_LINE : 1, //文章預覽段落數
   CONTACT: [ //About Page's icons

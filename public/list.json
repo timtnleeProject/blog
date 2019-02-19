@@ -3,7 +3,7 @@
   "articles": [
     {
       "name":"mongodb windows",
-      "tags": ["mongoDB"],
+      "tags": ["mongodb"],
       "date":"2019/2/18",
       "pinned": true,
       "image": "images/mongodb/mongodb.jpg"
@@ -12,7 +12,7 @@
       "name":"README",
       "date":"2019/1/16",
       "pinned": true,
-      "tags":["document","blog"],
+      "tags":["文件","blog"],
       "image":"images/default/ghpages.JPG"
     },
     {

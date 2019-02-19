@@ -1,6 +1,8 @@
 <template>
   <div class="banner">
-    <h3 class="quote">{{settings.QUOTE}}</h3>
+    <h3 class="quote">
+      <pre>{{settings.QUOTE}}</pre>
+    </h3>
     <img :src="settings.BANNER_IMAGE" alt="" srcset="">
   </div>
 </template>
@@ -42,6 +44,9 @@ export default {
   font-style: italic;
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.5rem;
+  pre {
+    font-family: inherit;
+  }
 }
 @media screen and (max-width: $lg){
   .banner .quote {
