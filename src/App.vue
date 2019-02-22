@@ -151,6 +151,7 @@ body {
 }
 .content{
   width: 100%;
+  min-height: 95vh;
   /* overflow-x: scroll; */
   box-sizing: border-box;
   // padding: $pd;

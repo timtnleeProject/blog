@@ -34,7 +34,7 @@ md \data\db
 可以看到 mongoDB server 正在運行
 ![""](images/mongodb/service.jpg)
 
-發現重開機的時候 mongoDB 會自己啟動，要如何設定之後再來研究好了
+發現重開機的時候 mongoDB 會自己啟動，可以從 windows 的服務改成手動啟動。
 
 ## 基本指令
 

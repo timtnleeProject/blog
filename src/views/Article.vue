@@ -21,7 +21,14 @@
           <div>tags: </div>
           <tag v-for="tag in tags" :key="tag" :tag="tag"></tag>
         </div>
-        <div class="article" v-html="content"></div>
+        <div class="article" v-html="content" @click="zoomImg($event)"></div>
+      </div>
+    </div>
+    <div class="zoomin" v-if="openZoom" @click="closeZoom($event)">
+      <div class="hint">zoom and move image</div>
+      <div class="wrap">
+        <clipper-fixed class="clipper" :src="zoomSrc" :ratio="ratio" :zoomRate="0.08" :min-scale="0.7" :grid="false" border-color="rgba(0,0,0,0)" bg-color="white" shadow="rgba(0,0,0,0)"></clipper-fixed>
+        <img class="cancel" src="icons/cancel.png" alt="" @click.stop="()=>openZoom=!openZoom">
       </div>
     </div>
   </div>
@@ -31,11 +38,13 @@
 import Tag from '../components/Tag.vue'
 import Loading from '../components/Loading.vue'
 import { mapState } from 'vuex'
+import { clipperFixed } from "vuejs-clipper"
 
 export default {
   components: {
     Tag,
-    Loading
+    Loading,
+    clipperFixed
   },
   data: ()=>{
     return {
@@ -48,7 +57,10 @@ export default {
       h1idx: -1,
       h2idx: -1,
       h3idx: -1,
-      show: false
+      show: false,
+      zoomSrc: 'images/issue/mail1.jpg',
+      openZoom: false,
+      ratio: 4/3
     }
   },
   created(){
@@ -169,6 +181,16 @@ export default {
       window.scrollTo(0,el.offsetTop - sc_offset)
       this.scroll()
     },
+    zoomImg(e){
+      if (e.target.nodeName === 'IMG'){
+        this.zoomSrc = e.target.src
+        this.openZoom = true
+      }
+    },
+    closeZoom(e){
+      if (e.target.classList.contains('zoomin'))
+        this.openZoom = false
+    },
     toggleMenu(e){
       if(this.$el.querySelector('.tree').contains(e.target)) return
       if(this.show) this.show=false
@@ -216,6 +238,45 @@ export default {
   box-shadow: 1px 1px 1px gray;
   bottom: 20px;
   right: 20px;
+}
+.zoomin {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100vh;
+  .wrap {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: auto;
+    max-height: 100vh;
+    overflow: hidden;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 900px;
+  }
+  .hint {
+    color: white;
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  .cancel {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+  }
+  .clipper {
+    width: 100%;
+  }
 }
 @media screen and (max-width: $md){
   .tree {
