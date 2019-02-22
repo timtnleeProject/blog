@@ -5,8 +5,12 @@
       "name":"mongodb windows",
       "tags": ["mongodb"],
       "date":"2019/2/18",
-      "pinned": true,
       "image": "images/mongodb/mongodb.jpg"
+    },
+    {
+      "name":"first issue",
+      "tags": ["日記"],
+      "date":"2019/2/21"
     },
     {
       "name":"README",
