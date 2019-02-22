@@ -10,10 +10,10 @@ const Search = () => import('./views/Search.vue')
 const About = () => import('./views/About.vue')
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/article/:name', component: Article},
-  { path: '/search', component: Search },
-  { path: '/about', component: About}
+  { path: '/', component: Home, meta:{title: 'Home'} },
+  { path: '/article/:name', component: Article, meta:{title: 'Article'}},
+  { path: '/search', component: Search, meta:{title: 'Articles'} },
+  { path: '/about', component: About, meta:{title: 'About'}}
 ]
   
 const router = new VueRouter({
@@ -21,6 +21,11 @@ const router = new VueRouter({
   scrollBehavior () {
     return { x:0, y:0}
   }
+})
+
+router.beforeEach((to, _from, next) => {
+  document.title = `Timtnlee's Blog - ${to.meta.title}`
+  next()
 })
 
 export default router
