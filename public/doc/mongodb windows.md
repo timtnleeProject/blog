@@ -53,7 +53,7 @@ local   0.000GB
 
 ### 切換、新增 DB
 
-use <DB Name> 可以切換至該 DB，如果 DB 不存在就創建一個新的，創建一個名為 test 的 DB
+`use <DB Name>` 可以切換至該 DB，如果 DB 不存在就創建一個新的，創建一個名為 test 的 DB
 
 ```bash
 > use test

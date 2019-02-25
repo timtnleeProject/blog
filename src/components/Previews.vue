@@ -9,7 +9,7 @@
         <div class="prev-area block">
           <div class="plan-text line" v-html="p.content"></div>
             <div class="inner-block line">
-            <div class="cover"></div>
+            <!-- <div class="cover"></div> -->
           </div>
         </div>
         <div class="line">
@@ -113,14 +113,14 @@ export default {
   margin: 10px;
   padding-right: 20px;
 }
-.prev-area .cover {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  top:0;
-  left: 0;
-  background-image: linear-gradient(to top, rgba(255,255,255,1),rgba(255,255,255,0.5),rgba(255,255,255,0),rgba(255,255,255,0));
-}
+// .prev-area .cover {
+//   width: 100%;
+//   height: 100%;
+//   position: relative;
+//   top:0;
+//   left: 0;
+//   background-image: linear-gradient(to top, rgba(255,255,255,1),rgba(255,255,255,0.5),rgba(255,255,255,0),rgba(255,255,255,0));
+// }
 .line {
   padding: 3px;
   font-size: 0.86rem;

@@ -213,7 +213,7 @@ export default {
   position: fixed;
   top: 90px; /* header height + 10px*/
   left: 0;
-  padding: 10px;
+  padding: 6px;
   z-index: 100;
   max-height: 80vh;
   box-sizing: border-box;
