@@ -2,6 +2,12 @@
   "about":"about",
   "articles": [
     {
+      "name":"m001ch1",
+      "tags": ["mongodb","筆記"],
+      "date":"2019/2/26",
+      "image": "images/mongodb/mongodb.jpg"
+    },
+    {
       "name":"d3 note",
       "tags": ["D3","筆記"],
       "date":"2019/2/25"

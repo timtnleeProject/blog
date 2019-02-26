@@ -1,4 +1,4 @@
-# 本機安裝 mongoDB (windows)
+# 本機安裝 MongoDB (windows)
 
 紀錄如何在本機安裝 mongoDB (windows) 以及簡易使用。
 
@@ -10,28 +10,62 @@
 
 安裝路徑可以選自己偏好的，預設在 `C\Program Files`
 
+如果勾選 *install as a service* 則安裝之後可以用 windows 服務來啟動和停止。
+
+![404](images/mongodb/install.jpg)
+
 ## 設定
 
-參考[官網步驟][2]，需要設定 DB File storage 的路徑，預設是在 `\data\db`
+### Normal setting
 
-其中一種方式是在 mongoDB 裡的 data 資料夾下指令
+參考[官網步驟][2]，DB File storage 的路徑預設是在 C 槽的 `\data\db`
+
+可以直接創建該資料夾後執行 mongod.exe
 
 ```bash
+cd C:\
 md \data\db
 ```
 
-## 運行
+或是想要使用別的 data path
+
+```bash
+"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath "d:\test\mongo db data"
+```
+
+### As a Windows Service
+
+如果剛剛安裝選擇 Install as a Windows Service 的話，可以照以下步驟設定：
+
+安裝服務
+
+```bash
+"C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe" --config "C:\Program Files\MongoDB\Server\4.0\bin\mongod.cfg" --install
+```
+
+可在 mongod.cfg 裡設定 logPath 和 dbPath
+
+完成後可使用 windows 服務開啟
+
+![404](images/mongodb/mservice.jpg)
+
+或使用指令
+
+```bash
+net start MongoDB
+net stop MongoDB
+```
 
 打開 mongodb 資料夾 `MongoDB\Server\4.0\bin` 可以看到幾個應用程式 (.exe)
 
 ![""](images/mongodb/exe.jpg)
 
-* mongod.exe: 運行mongodb
+* mongod.exe: mongodb
 * mongo.exe : 可連接 mongoDB 的 shell
 
-執行 mongod.exe 如果正常運行，便可開啟 mongo.exe 來下指令操作了
+如果 MongoDB 正常運行，便可開啟 mongo.exe 來下指令操作了
 
-可以看到 mongoDB server 正在運行
+我是使用 windows service 的方式，可以看到 mongoDB server 正在運行
 ![""](images/mongodb/service.jpg)
 
 發現重開機的時候 mongoDB 會自己啟動，可以從 windows 的服務改成手動啟動。
@@ -94,6 +128,14 @@ WriteResult({ "nInserted" : 1 })
 
 連線之後就可以看到 DB，並且可以直接更改 document 和對 DB 進行操作
 ![""](images/mongodb/roboto.jpg)
+
+### MongoDB Compass
+
+有 Schema 分析功能非常好用
+
+![404](images/m001ch1/schema.jpg)
+
+在[這篇](#/article/m001ch1)有介紹，我現在是使用 Compass。
 
 [1]:https://www.mongodb.com/download-center/community
 [2]:https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/#set-up-the-mongodb-environment

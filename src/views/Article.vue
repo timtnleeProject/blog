@@ -21,6 +21,7 @@
           <div>tags: </div>
           <tag v-for="tag in tags" :key="tag" :tag="tag"></tag>
         </div>
+        <div>date: {{date}}</div>
         <div class="article" v-html="content" @click="zoomImg($event)"></div>
       </div>
     </div>
@@ -96,7 +97,15 @@ export default {
     },
     ...mapState({
       previews: 'previews'
-    })
+    }),
+    date(){
+      return (this.metadata)
+        ? (function(metadata){
+          const d = metadata.date
+          return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`
+        })(this.metadata)
+        : ''
+    },
   },
   methods: {
     scroll(){
