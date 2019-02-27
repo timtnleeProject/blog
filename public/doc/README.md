@@ -2,7 +2,7 @@
 
 Vuejs 靜態部落格
 
-[Demo](https://timtnleeproject.github.io/vuejs-static-blog/#/)
+[Demo](https://timtnleeproject.github.io/blog/#/)
 
 ## 特色
 
@@ -27,7 +27,7 @@ Vuejs 靜態部落格
 ### 使用方法
 
 1. Clone repository
-2. repository 設定使用 `gh-pages` 分支呈現 GitHub Pages 頁面!["not found"](https://timtnleeproject.github.io/vuejs-static-blog/images/default/ghpages.JPG)
+2. repository 設定使用 `gh-pages` 分支呈現 GitHub Pages 頁面!["not found"](https://timtnleeproject.github.io/blog/images/default/ghpages.JPG)
 3. 開始使用 gh-pages 設定 blog
 
 ## gh-pages 結構

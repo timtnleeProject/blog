@@ -1,10 +1,10 @@
 # Blog
 
-[中文文件](https://timtnleeproject.github.io/vuejs-static-blog/#/article/README)
+[中文文件](https://timtnleeproject.github.io/blog/#/article/README)
 
 Vuejs static blog
 
-[Demo](https://timtnleeproject.github.io/vuejs-static-blog/#/)
+[Demo](https://timtnleeproject.github.io/blog/#/)
 
 ## Features
 
@@ -28,7 +28,7 @@ Vuejs static blog
 ### Usage
 
 1. Clone repository
-2. setting GitHub Pages serve the `gh-pages` branch !["not found"](https://raw.githubusercontent.com/timtnleeProject/vuejs-static-blog/master/public/images/default/ghpages.JPG)
+2. setting GitHub Pages serve the `gh-pages` branch !["not found"](https://raw.githubusercontent.com/timtnleeProject/blog/master/public/images/default/ghpages.JPG)
 3. start writing your blog!
 
 ## gh-pages branch
