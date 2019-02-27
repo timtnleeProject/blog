@@ -36,10 +36,6 @@ from latest to earliest:
 * [**bes-ajax**][bes-ajax]
 * [**poker**][poker]
 
-## school
-
-* NCCU MIS bachelor
-
 ## work experience
 
 * 2018/9 ~
