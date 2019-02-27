@@ -2,27 +2,38 @@
   "about":"about",
   "articles": [
     {
+      "name":"m001ch1",
+      "tags": ["mongodb","筆記"],
+      "date":"2019/2/26",
+      "image": "images/mongodb/mongodb.jpg"
+    },
+    {
+      "name":"d3 note",
+      "tags": ["D3","筆記"],
+      "date":"2019/2/25"
+    },
+    {
       "name":"mongodb windows",
-      "tags": ["mongodb"],
+      "tags": ["mongodb","筆記"],
       "date":"2019/2/18",
       "image": "images/mongodb/mongodb.jpg"
     },
     {
       "name":"first issue",
-      "tags": ["日記"],
+      "tags": ["雜記"],
       "date":"2019/2/21"
     },
     {
       "name":"README",
       "date":"2019/1/16",
       "pinned": true,
-      "tags":["文件","blog"],
+      "tags":["文件"],
       "image":"images/default/ghpages.JPG"
     },
     {
       "name":"期貨",
       "date":"2019/2/9",
-      "tags":["投資"],
+      "tags":["投資","筆記"],
       "image": "images/futures/investment.jpg"
     }
   ]
