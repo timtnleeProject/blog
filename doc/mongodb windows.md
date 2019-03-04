@@ -4,11 +4,11 @@
 
 ## 下載 mongoDB server
 
-到[mongodb官網][1]下載 mongoDB community server.
+到[mongodb官網][1]下載 mongoDB server，看你要 community 還是 Enterprice 版本。
 
 !["not found"](images/mongodb/download.jpg)
 
-安裝路徑可以選自己偏好的，預設在 `C\Program Files`
+安裝路徑可以選自己偏好的，預設在 `C\Program Files\MongoDB`
 
 如果勾選 *install as a service* 則安裝之後可以用 windows 服務來啟動和停止。
 
@@ -60,7 +60,7 @@ net stop MongoDB
 
 ![""](images/mongodb/exe.jpg)
 
-* mongod.exe: mongodb
+* mongod.exe: mongodb server
 * mongo.exe : 可連接 mongoDB 的 shell
 
 如果 MongoDB 正常運行，便可開啟 mongo.exe 來下指令操作了
@@ -69,6 +69,8 @@ net stop MongoDB
 ![""](images/mongodb/service.jpg)
 
 發現重開機的時候 mongoDB 會自己啟動，可以從 windows 的服務改成手動啟動。
+
+另外**也可以將 mongo.exe 和 mongod.exe 的路徑加入環境變數 path，方便在 cmd 直接呼叫**。
 
 ## 基本指令
 
