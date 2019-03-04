@@ -174,10 +174,10 @@ body {
   color: white;
 }
 .my-header {
-  position: fixed;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+  // position: fixed;
+  // position: -webkit-sticky;
+  // position: sticky;
+  // top: 0;
 }
 .bottom {
   position: absolute;
@@ -214,6 +214,7 @@ body {
     transform: translateX(0%);
   }
   .my-header {
+    position: fixed;
     position: -webkit-sticky;
     position: sticky;
     top: 0;

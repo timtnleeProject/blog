@@ -220,15 +220,19 @@ export default {
 }
 .tree {
   position: fixed;
-  top: 90px; /* header height + 10px*/
+  top: 90px;
   left: 0;
   padding: 6px;
   z-index: 100;
   max-height: 80vh;
+  margin-right: -10px;
   box-sizing: border-box;
   width: $tree-width;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.tree::-webkit-scrollbar{
+  width: 0px;
 }
 .menu-bar {
   position: fixed;
@@ -287,6 +291,7 @@ export default {
     width: 100%;
   }
 }
+
 @media screen and (max-width: $md){
   .tree {
     display: none;
