@@ -51,6 +51,7 @@
         </div>
       </div>
       <h3 class="h">Articles</h3>
+      <small>filtered: {{filtered_previews.length}} total: {{previews.length}}</small>
       <div class="ept-block" v-if="filtered_previews.length===0">No matching article</div>
       <previews :previews="filtered_previews" :max="filtered_previews.length"></previews>
     </div>
@@ -198,7 +199,7 @@ export default {
   position: fixed;
   margin: 0;
   padding: 10px 15px;
-  top: 50px;
+  top: 0px;
   left: 0;
   width: 100%;
   box-sizing: border-box;
@@ -215,6 +216,12 @@ export default {
     border-bottom: 10px solid;
     border-right: 7px solid transparent;
     margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: $lg){
+  .search-bar {
+    top: 50px;
   }
 }
 .row {

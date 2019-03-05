@@ -133,7 +133,7 @@ body {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #555555;
+  color: #444444;
 }
 .block {
   position: relative;
@@ -172,12 +172,6 @@ body {
   transform: translateY(-50%);
   box-sizing: border-box;
   color: white;
-}
-.my-header {
-  // position: fixed;
-  // position: -webkit-sticky;
-  // position: sticky;
-  // top: 0;
 }
 .bottom {
   position: absolute;

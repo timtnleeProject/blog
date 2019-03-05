@@ -224,15 +224,20 @@ export default {
   left: 0;
   padding: 6px;
   z-index: 100;
-  max-height: 80vh;
+  max-height: 70vh;
   margin-right: -10px;
   box-sizing: border-box;
+  background-color: white;
   width: $tree-width;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 .tree::-webkit-scrollbar{
-  width: 0px;
+  width: 3px;
+  background-color: #dddddd;
+}
+.tree::-webkit-scrollbar-thumb{
+  background-color: #666666;
 }
 .menu-bar {
   position: fixed;
