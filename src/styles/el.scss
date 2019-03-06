@@ -1,5 +1,6 @@
 /* markdown style*/
 @import 'Style';
+$indent: 10px;
 .article{
   ul {
     padding-inline-start: 2em;
@@ -10,11 +11,10 @@
     margin-bottom: 2px;
   }
   blockquote {
-    background-color: $color-light;
-    color: inherit;
+    color: $color-main;
     border-left: 3px solid $color-sub;
     font-style: italic;
-    margin: 0;
+    margin: 5px 0 5px $indent;
     border-radius: 2px;
     p {
       padding: 1em 1em 1em 1.5em;
@@ -23,8 +23,11 @@
   a {
     color: blueviolet;
   }
-  p{
-    padding-left: 10px;
+  >pre{
+    margin-left: $indent;
+  }
+  >p{
+    padding-left: $indent;
   }
   img {
     cursor: zoom-in;

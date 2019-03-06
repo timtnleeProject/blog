@@ -1,5 +1,5 @@
 return {
-  HEADER_TITLE: "Timtnlee's Blog",
+  HEADER_TITLE: "",
   HEADER_SUBTITLE: "",
   FOOTER_TEXT: "litingen1995@gmail.com",
   HOME_PINNED_ARTICLE_TEXT: "Pinned articles",

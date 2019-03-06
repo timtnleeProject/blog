@@ -1,6 +1,9 @@
 <template>
   <div class="sidebar">
     <div class="title">{{settings.HEADER_TITLE}}</div>
+    <div class="profile">
+      <img src="images/default/profile.jpg" alt="">
+    </div>
     <small class="indent">{{settings.SIDEBAR_TEXT}}</small>
     <router-link v-for="r in routes" class="tx-light" :class="{active:r.path===$route.path}" :key="r.name" :to="r.path">
       <span class="tx">{{r.name}}</span>
@@ -38,7 +41,7 @@ export default Vue.extend({
 <style lang='scss' scoped>
 @import 'Style';
 .sidebar {
-  padding-left: 16px;
+  padding: 0px 16px;
   color: white;
   display: flex;
   position: relative;
@@ -59,6 +62,14 @@ export default Vue.extend({
   }
   >*+*{
     margin-top: 1rem;
+  }
+}
+.profile {
+  display: none;
+  width: 100%;
+  padding-right: 16px;
+  img {
+    width: 100%;
   }
 }
 .title {

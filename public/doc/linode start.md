@@ -129,10 +129,15 @@ sudo systemctl restart sshd
 
 ### Use Fail2Ban for SSH Login Protection
 
-[Fail2Ban][fail2ban] 是一個應用程式，幫助封鎖多次嘗試登入失敗的 IP。以密碼登入通常試錯不超過三次，以 SSH key 認證則是一次，超過這些次數
-則視為惡意的行為。
+[Fail2Ban][fail2ban] 是一個 log-parsing 應用程式，它監控系統日誌有無自動化攻擊的徵兆，根據規則封鎖可能嘗試進行攻擊的 IP。當攻擊發生 fail2ban 還能 email 通知你。
+
+Fail2ban 主要專注在 SSH 的攻擊上，不過你可以進一步設定讓它運作於任何使用 log files 的服務。
+
+例如幫助封鎖多次嘗試登入失敗的 IP，以密碼登入通常試錯不超過三次，以 SSH key 認證則是一次，超過這些次數則視為惡意的行為。
 
 Fail2Ban 可以監控多種協定包含：SSH, HTTP 以及 SMTP。Fail2Ban 預設只會監控 SSH，對於安全是很大的幫助，因為主機通常設定開放給任何 IP 連線。
+
+詳細步驟可以看我的[Use Fail2ban to Secure Your Server](#/article/fail2ban)整理。
 
 [get start]:https://www.linode.com/docs/getting-started/
 [swap]:https://opensource.com/article/18/9/swap-space-linux-systems
@@ -140,3 +145,4 @@ Fail2Ban 可以監控多種協定包含：SSH, HTTP 以及 SMTP。Fail2Ban 預�
 [secure]:https://www.linode.com/docs/security/securing-your-server/
 [upgrade]:https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F
 [fail2ban]:http://www.fail2ban.org/wiki/index.php/Main_Page
+[fail2bantur]:https://www.linode.com/docs/security/using-fail2ban-for-security/

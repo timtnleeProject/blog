@@ -2,6 +2,11 @@
   "about":"about",
   "articles": [
     {
+      "name":"fail2ban",
+      "tags": ["linux","linode","Fail2ban","筆記"],
+      "date":"2019/3/6"
+    },
+    {
       "name":"linode start",
       "tags": ["linux","linode","筆記","未完"],
       "date":"2019/3/4"
