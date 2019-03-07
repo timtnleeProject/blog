@@ -2,8 +2,13 @@
   "about":"about",
   "articles": [
     {
+      "name":"babelinit",
+      "tags": ["babel","筆記","未完"],
+      "date":"2019/3/7"
+    },
+    {
       "name":"fail2ban",
-      "tags": ["linux","linode","Fail2ban","筆記"],
+      "tags": ["linux","linode","Fail2ban","筆記","未完"],
       "date":"2019/3/6"
     },
     {
@@ -13,8 +18,8 @@
     },
     {
       "name":"m001ch2",
-      "tags": ["mongodb","筆記","未完"],
-      "date":"2019/2/27",
+      "tags": ["mongodb","筆記"],
+      "date":"2019/3/6",
       "image": "images/mongodb/mongodb.jpg"
     },
     {
