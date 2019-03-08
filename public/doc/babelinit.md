@@ -1,10 +1,12 @@
-# Babel7 Basic
+# Babel 7 Basic
 
 整理 babel7 的一些觀念和設定
 
 ## Webpack & Babel
 
-webpack 是一個 bundler，也就是打包的工具，處理打包模塊(各種資源無論是 js,css 甚至圖片)，主要用在前端 (瀏覽器)，當然可以設 target: node 編譯成 node讓你的前端開發可以用模塊化的方式開發後打包成瀏覽器能使用的檔案
+webpack 是一個 bundler，也就是打包的工具，解決**模塊**問題以及**打包**各種資源無論是 js,css 甚至圖片。
+
+而 babel 是一種**編譯** js 程式碼的工具。
 
 ## Install @babel/core, @babel/cli
 
