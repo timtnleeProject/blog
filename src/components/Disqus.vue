@@ -4,17 +4,19 @@
 
 <script>
 export default {
+  props: ['identifier'],
   data: ()=>{
     return {
       scriptID: 'disqus_script'
     }
   },
   mounted(){
-    const vm = this
+    const identifier = this.identifier
 
     window.disqus_config = function () {
       this.page.url = window.location.href  // Replace PAGE_URL with your page's canonical URL variable  
-      this.page.identifier = vm.$route.path // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.identifier = identifier // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.title = identifier
     }
 
     const exist = document.getElementById(this.scriptID)
@@ -23,6 +25,8 @@ export default {
         reload: true,
         config: function () {
           this.page.url = window.location.href
+          this.page.identifier = identifier
+          this.page.title = identifier
         }
       })
       return

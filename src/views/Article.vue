@@ -23,7 +23,7 @@
         </div>
         <div>date: {{date}}</div>
         <div class="article" v-html="content" @click="zoomImg($event)"></div>
-        <disqus></disqus>
+        <disqus :identifier="$route.params.name"></disqus>
       </div>
     </div>
     <div class="zoomin" v-if="openZoom" @click="closeZoom($event)">
@@ -259,6 +259,9 @@ export default {
   box-shadow: 1px 1px 1px gray;
   bottom: 20px;
   right: 20px;
+}
+.article{
+  margin-bottom: 100px;
 }
 .zoomin {
   z-index: 100;
