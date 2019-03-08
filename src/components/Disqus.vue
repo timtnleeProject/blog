@@ -17,11 +17,8 @@ export default {
       this.page.identifier = vm.$route.path // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     }
 
-    const d = document,
-      s = d.createElement('script'),
-      el = d.getElementById(this.scriptID)
-
-    if(el) {
+    const exist = document.getElementById(this.scriptID)
+    if(exist) {
       window.DISQUS.reset({
         reload: true,
         config: function () {
@@ -30,11 +27,12 @@ export default {
       })
       return
     }
-    s.id = this.scriptID
-    s.src = 'https://https-timtnleeproject-github-io-blog-2.disqus.com/embed.js?'
-    s.setAttribute('data-timestamp', +new Date());
 
-    (d.head||d.body).appendChild(s)
+    const d = document, s = d.createElement('script')
+    s.src = 'https://https-timtnleeproject-github-io-blog-2.disqus.com/embed.js'
+    s.id = this.scriptID
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s)
   }
 }
 </script>
