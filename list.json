@@ -3,8 +3,9 @@
   "articles": [
     {
       "name":"babelinit",
-      "tags": ["babel","筆記","未完"],
-      "date":"2019/3/7"
+      "tags": ["babel","筆記"],
+      "date":"2019/3/7",
+      "image": "images/default/babel.png"
     },
     {
       "name":"fail2ban",
