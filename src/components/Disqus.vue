@@ -7,14 +7,16 @@ export default {
   props: ['identifier'],
   data: ()=>{
     return {
-      scriptID: 'disqus_script'
+      scriptID: 'disqus_script',
+      load: false
     }
   },
   mounted(){
+    if(!this.load) return
     const identifier = this.identifier
 
     window.disqus_config = function () {
-      this.page.url = window.location.href  // Replace PAGE_URL with your page's canonical URL variable  
+      this.page.url = window.location.href
       this.page.identifier = identifier // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       this.page.title = identifier
     }
