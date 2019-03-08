@@ -10,6 +10,9 @@ $indent: 10px;
   li {
     margin-bottom: 2px;
   }
+  strong {
+    color: black;
+  }
   blockquote {
     color: $color-main;
     border-left: 3px solid $color-sub;
@@ -137,7 +140,7 @@ h6 {
   color: $color-special;
   background-color: white;
 }
-.tag {
+.tags-container .tag {
   font-size: 0.86rem;
   display: flex;
   position: relative;
