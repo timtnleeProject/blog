@@ -110,6 +110,8 @@ ignoreip = 127.0.0.1/8 123.45.67.89
 
 其他相關設定可以參考[這裡](https://www.linode.com/docs/security/using-fail2ban-for-security/#other-jail-configuration)
 
+未完...
+
 ## 其他資料
 
 * [Fail2ban 指令](https://www.fail2ban.org/wiki/index.php/Commands)
