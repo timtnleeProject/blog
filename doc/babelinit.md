@@ -1,6 +1,6 @@
 # Babel 7 Basic
 
-整理 babel7 的一些觀念和設定
+很廢的整理 babel7 的一些觀念和設定
 
 ## Webpack & Babel
 
@@ -267,6 +267,8 @@ P.S. 光是加上 Promise polyfill 打包文件就從原本 18kb 變成 72kb...
 ## 參考
 
 其他像是 babel-runtime, babel-register 等可以參考下面，我懶了...QQ
+
+另外如果想使用 nodemon + babel 的話可以使用 [babel-watch]() 這個套件，提供更佳的機制，不會每次都重載 babel，比較快速。
 
 * [https://blog.zfanw.com/babel-js/](https://blog.zfanw.com/babel-js/)
 * babel 官網

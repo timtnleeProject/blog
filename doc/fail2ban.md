@@ -90,11 +90,25 @@ ignoreip = 127.0.0.1/8 123.45.67.89
 
 詳細指令可參考[這裡](https://www.fail2ban.org/wiki/index.php/Commands#JAIL_CONTROL)
 
-## Ban Time and Retry Amount
+### Ban Time and Retry Amount
 
 `bantime`,`findtime`,`maxentry` 設定封鎖的規則
 
 在 `findtime` (seconds) 時間內，同個 IP 登入失敗達到 `maxentry` 次數時，Fail2ban 會封鎖該 IP `bantime` (seconds) 時間
+
+### Email Alerts
+
+當 Fail2ban 觸發時可以發出 email 通知。
+
+* `estemail`: The email address where you would like to receive the emails.
+* `sendername`: The name under which the email shows up.
+* `sender`: The email address from which Fail2ban will send emails.
+
+![404](images/fail2ban/emailconf.jpg)
+
+## Other configurations
+
+其他相關設定可以參考[這裡](https://www.linode.com/docs/security/using-fail2ban-for-security/#other-jail-configuration)
 
 ## 其他資料
 
