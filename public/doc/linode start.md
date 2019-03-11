@@ -137,7 +137,7 @@ Fail2ban 主要專注在 SSH 的攻擊上，不過你可以進一步設定讓它
 
 Fail2Ban 可以監控多種協定包含：SSH, HTTP 以及 SMTP。Fail2Ban 預設只會監控 SSH，對於安全是很大的幫助，因為主機通常設定開放給任何 IP 連線。
 
-詳細步驟可以看我的[Use Fail2ban to Secure Your Server](#/article/fail2ban)整理。
+詳細步驟可以看我的[Use Fail2ban to Secure Your Server](#/article/fail2ban)整理或是 linode 的教學。
 
 [get start]:https://www.linode.com/docs/getting-started/
 [swap]:https://opensource.com/article/18/9/swap-space-linux-systems

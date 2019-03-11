@@ -23,7 +23,7 @@
         </div>
         <div>date: {{date}}</div>
         <div class="article" v-html="content" @click="zoomImg($event)"></div>
-        <disqus :identifier="$route.params.name"></disqus>
+        <comment :identifier="$route.params.name"></comment>
       </div>
     </div>
     <div class="zoomin" v-if="openZoom" @click="closeZoom($event)">
@@ -39,7 +39,7 @@
 <script>
 import Tag from '../components/Tag.vue'
 import Loading from '../components/Loading.vue'
-import Disqus from '../components/Disqus.vue'
+import Comment from '../components/Comment.vue'
 import { mapState } from 'vuex'
 import { clipperFixed } from "vuejs-clipper"
 
@@ -48,7 +48,7 @@ export default {
     Tag,
     Loading,
     clipperFixed,
-    Disqus
+    Comment
   },
   data: ()=>{
     return {
