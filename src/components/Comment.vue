@@ -16,7 +16,7 @@ export default {
   mounted(){
     if(!this.load) return
     window.hcb_user={
-      PAGE: window.location.origin + `/${this.identifier}`
+      PAGE: window.location.origin + `/article/${this.identifier}`
     };
     (function(){var s=document.createElement("script"), l=window.hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24TDiewwXIHNEwN523YJ7nL."+"&opts=16862&num=10&ts=1552290750324");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s)})()
   }
