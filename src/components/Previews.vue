@@ -60,7 +60,7 @@ export default {
 @import 'Style';
 .preview {
   width: 100%;
-  height: $preview-height;
+  min-height: $preview-height;
   cursor: pointer;
   border-bottom: 1px solid lightgray;
   padding: 10px;
@@ -69,7 +69,7 @@ export default {
   flex-wrap: nowrap;
   .prev-img {
     flex: 0 0 $preview-height;
-    height: 100%;
+    height: $preview-height;
     overflow: hidden;
     position: relative;
     img {
@@ -103,6 +103,7 @@ export default {
   }
   .prev-area {
     flex-shrink: 1;
+    max-height: 3.3rem;
     overflow: hidden;
   }
 }
