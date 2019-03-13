@@ -139,6 +139,66 @@ Fail2Ban 可以監控多種協定包含：SSH, HTTP 以及 SMTP。Fail2Ban 預�
 
 詳細步驟可以看我的[Use Fail2ban to Secure Your Server](#/article/fail2ban)整理或是 linode 的教學。
 
+### Remove Unused Network-Facing Services
+
+多數 Linux 發行版的安裝附帶一些網路服務，監聽在 internet, loopback internet (或是兩者結合) 即將到來的連線。
+
+沒有使用到的網路面向服務應該要將其從系統移除，減少運行程序和安裝套件的攻擊面。
+
+Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.
+
+#### Determine Running Services
+
+查看正在運行的網路服務，可以使用 `ss` 指令來查看 socket 狀態
+
+```bash
+ss -atpu
+# 等同於
+ss -a -t -p -u
+```
+
+詳細 `ss` 指令的介紹及參數可以參考 [G. T. Wang 的這篇][ssref]，或是用 man 查詢
+
+![404](images/linode1/ss.jpg)
+
+可以看到 SSH 進程 (sshd) 正在監聽且已連接。各發行版預設運行的服務不同，因此看到的結果也不一樣。
+
+#### Determine Which Services to RemovePermalink
+
+在沒有開啟防火牆下，對你的 Linode 進行基本的 TCP 和 UDP nmap 掃描會顯示 SSH 和其他可能正在監聽連線的服務。藉由設定防火牆可以依據需求篩選掉這些部分。理想上沒有使用的服務應該去除。
+
+我們需要 SSH 來連接主機，其他像是 `chronyd`, `systemd-resolved` 以及 `dnsmasq` 通常只監聽 localhost 並且極少對外連接，這些服務是你作業系統的一部份，移除他們可能並不合適。
+
+但是其他非必須的服務則是看有無需要，否則建議移除，像是 Exim, Apache, RPC
+
+#### Uninstall the Listening Services
+
+Ubuntu:
+
+```bash
+apt purge package_name
+```
+
+### Configure a Firewall
+
+使用防火牆來阻擋不想要的入站流量 (traffic) 以提供高效率的安全保護。當只允許特定流入流量，可以防範入侵和 network mapping，最好只允許你需要的流量 (traffic)。
+
+參考 Linode 文件如何設定防火牆：
+
+* [Iptables][iptables] is the controller for netfilter, the Linux kernel’s packet filtering framework. Iptables is included in most Linux distributions by default.
+* [FirewallD][firewallid] is the iptables controller available for the CentOS / Fedora family of distributions.
+* [UFW][ufw] provides an iptables frontend for Debian and Ubuntu.
+
+## Next Step
+
+以上為最基本加強任何 Linux 主機的步驟，更進一步的安全防護會視主機用途而不同。其他的技術像是應用程式設定，使用[intrusion detection](https://www.linode.com/docs/uptime/monitoring/ossec-ids-debian-7/) 或是安裝 [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control)。
+
+現在你可以根據你的需要來設定 Linode。Linode 有許多文件幫助你解決各種主題像是 [migration from shared hosting](https://www.linode.com/docs/migrate-to-linode/migrate-from-shared-hosting) 到[允許雙向認證](https://www.linode.com/docs/security/linode-manager-security-controls)和[架設網站](https://www.linode.com/docs/websites/hosting-a-website)
+
+Linode 的文件真的蠻豐富的，其他還有 [nginx](https://www.linode.com/docs/web-servers/nginx/) 的教學
+
+好多東西要看啊......
+
 [get start]:https://www.linode.com/docs/getting-started/
 [swap]:https://opensource.com/article/18/9/swap-space-linux-systems
 [ssh]:http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html
@@ -146,3 +206,7 @@ Fail2Ban 可以監控多種協定包含：SSH, HTTP 以及 SMTP。Fail2Ban 預�
 [upgrade]:https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F
 [fail2ban]:http://www.fail2ban.org/wiki/index.php/Main_Page
 [fail2bantur]:https://www.linode.com/docs/security/using-fail2ban-for-security/
+[ssref]:https://blog.gtwang.org/linux/socket-statistics-ss-command-tutorial/
+[iptables]:https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/
+[firewallid]:https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos/
+[ufw]:https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw/
