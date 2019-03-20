@@ -88,6 +88,7 @@ adduser tim sudo
 ```
 
 > **注意**
+>
 > 並非所有的 Linux 發行版系統預設有 sudo，但所有 Linode 提供的映象檔的套件庫都有 sudo。如果你得到輸出 sudo: command not found，需先安裝 sudo。
 
 ### Harden SSH Access
