@@ -12,7 +12,9 @@ Fail2Ban 可以監控多種協定包含：SSH, HTTP 以及 SMTP。Fail2Ban 預�
 
 ## Install Fail2ban
 
-> **Note** The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges, see our Users and Groups guide.
+> **Note**
+>
+> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges, see our Users and Groups guide.
 
 **Ubuntu:**
 

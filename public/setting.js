@@ -4,7 +4,7 @@ return {
   FOOTER_TEXT: "litingen1995@gmail.com",
   HOME_PINNED_ARTICLE_TEXT: "Pinned articles",
   HOME_ARTICLE_TEXT: "Latest articles",
-  BANNER_IMAGE: "images/default/aurora.jpg",
+  BANNER_IMAGE: "images/default/101.jpg",
   SIDEBAR_TEXT: "My personal static blog.",
   DEFAULT_PREVIEW_IMAGE: "images/default/code.jpeg",
   QUOTE: "Front-end developer\n\"Be better today than yesterday.\"",

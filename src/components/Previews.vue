@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <div v-for="(p,i) in previews_cut" :key="`preview${i}`" class="preview" @click="linkto({path:`/article/${p.name}`})">
       <div class="prev-img">
         <img :src="p.image||settings.DEFAULT_PREVIEW_IMAGE" alt="not found">

@@ -1,9 +1,9 @@
 <template>
   <div class="banner">
+    <img :src="settings.BANNER_IMAGE" alt="" srcset="">
     <h3 class="quote">
       <pre>{{settings.QUOTE}}</pre>
     </h3>
-    <img :src="settings.BANNER_IMAGE" alt="" srcset="">
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default {
   background-color: $color-dark;
 }
 .banner img{
+  top: 0;
   width: 100%;
   display: block;
 }
@@ -48,9 +49,19 @@ export default {
     font-family: inherit;
   }
 }
-@media screen and (max-width: $lg){
+@media screen and (max-width: $md){
   .banner .quote {
     font-size: 1rem;
+  }
+}
+@media screen and (min-width: $md){
+  .banner {
+    height: 400px;
+  }
+  .banner img{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 @media screen and (max-width: $lg) and (min-width: $md){
