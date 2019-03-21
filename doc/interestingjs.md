@@ -2,7 +2,7 @@
 
 ## Resting & Spreding Objects
 
-[各種好用](https://blog.bitsrc.io/6-tricks-with-resting-and-spreading-javascript-objects-68d585bdc83)
+[各種好用](https://blog.bitsrc.io/6-tricks-with-resting-and-spreading-javascript-objects-68d585bdc83)，很爽...
 
 ## && 返回值
 
@@ -21,5 +21,3 @@ false && 1 //false
 1 && true //true
 true && 1 //1
 ```
-
-## ~ 取反運算符
