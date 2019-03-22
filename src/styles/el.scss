@@ -32,6 +32,9 @@ $indent: 10px;
   }
   >p{
     padding-left: $indent;
+    * {
+      margin-bottom: 10px;
+    }
   }
   img {
     cursor: zoom-in;

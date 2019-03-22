@@ -107,6 +107,8 @@ service nginx restart
 
 我使用 [no-ip](https://www.noip.com/login?ref_url=%2Fmembers%2Fdns%2F%3Ftype%3Dcname%26domain%3Dhopto.org%26msg%3DHost%2Btimtnlee.hopto.org%2Bupdated.%2BUpdate%2Bwill%2Bbe%2Bapplied%2Bin%2Bapproximately%2B1%2Bminute.) 申請一組免費 DNS 網域 (沒錢QQ)
 
+因為是免費的屬於 Dynamic DNS，30天就會過期，剩七天內記得手動上去 confirm 延長時間。
+
 設定 DNS 指向你的 Private IP
 
 ![404](images/nodeapponlinode/configdns.jpg)
