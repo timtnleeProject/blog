@@ -58,6 +58,14 @@ npm run build
 npx babel index.js --out-file compiled.js
 ```
 
+### 補充
+
+如果要轉換整個資料夾:
+
+```bash
+babel src --out-dir lib
+```
+
 ## Plugins
 
 *index.js*
@@ -268,7 +276,7 @@ P.S. 光是加上 Promise polyfill 打包文件就從原本 18kb 變成 72kb...
 
 其他像是 babel-runtime, babel-register 等可以參考下面，我懶了...QQ
 
-另外如果想使用 nodemon + babel 的話可以使用 [babel-watch]() 這個套件，提供更佳的機制，不會每次都重載 babel，比較快速。
+另外如果想使用 nodemon + babel 的話可以使用 [babel-watch](https://github.com/kmagiera/babel-watch#readme) 這個套件，提供更佳的機制，不會每次都重載 babel，比較快速。
 
 * [https://blog.zfanw.com/babel-js/](https://blog.zfanw.com/babel-js/)
 * babel 官網
