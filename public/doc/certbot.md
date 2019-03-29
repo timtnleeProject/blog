@@ -70,6 +70,16 @@ sudo ufw allow https
 
 ![404](images/certbot/https.png)
 
+nginx 預設 404 會顯示版本
+
+![404](images/certbot/4041.png)
+
+可在 nginx config 加上 `server_tokens off;` 隱藏版本資訊
+
+![404](images/certbot/4042.png)
+
+最後可以在 config 設定隱藏版本 (增加安全性)
+
 ## 小心得
 
 現在的工具真的越來越方便，一鍵就可以幫你完成可能十個步驟，以前都要手動自己土法煉鋼。

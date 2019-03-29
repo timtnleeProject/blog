@@ -91,8 +91,8 @@ sudo ufw allow http
 修改完後可以下這個指令測試檢查 nginx config 有無參數錯誤或 syntax error。
 
 ```bash
-nginx -t # 檢查 nginx config
-nginx -t -c /etc/nginx/nginx.conf # 檢查特定 config file
+sudo nginx -t # 檢查 nginx config
+sudo nginx -t -c /etc/nginx/nginx.conf # 檢查特定 config file
 ```
 
 重啟 nginx 服務
