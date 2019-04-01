@@ -19,7 +19,8 @@
     {
       "name":"nodeapponlinode",
       "tags": ["linode","linux","nodeJS","nginx","筆記"],
-      "date":"2019/3/18"
+      "date":"2019/3/18",
+      "image":"images/default/linode.jpg"
     },
     {
       "name":"babelinit",
@@ -30,12 +31,14 @@
     {
       "name":"fail2ban",
       "tags": ["linux","linode","Fail2ban","筆記","未完"],
-      "date":"2019/3/6"
+      "date":"2019/3/6",
+      "image":"images/default/linode.jpg"
     },
     {
       "name":"linode start",
       "tags": ["linux","linode","筆記"],
-      "date":"2019/3/12"
+      "date":"2019/3/12",
+      "image":"images/default/linode.jpg"
     },
     {
       "name":"m001ch2",
@@ -52,7 +55,8 @@
     {
       "name":"d3 note",
       "tags": ["D3","筆記"],
-      "date":"2019/2/25"
+      "date":"2019/2/25",
+      "image":"images/d3_note/ex.jpg"
     },
     {
       "name":"mongodb windows",

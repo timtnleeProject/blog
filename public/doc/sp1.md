@@ -209,3 +209,89 @@ export default app
 
 ![404](images/sp1/route.png)
 
+### Body parser
+
+bady parser 處理 post body。
+
+[文件](https://github.com/dlau/koa-body#usage-with-koa-router)表示和 koa-router 一起使用，可以在需要的 routes 再呼叫 koa-body 中間介
+
+```javascript
+router.post('/users', koaBody(),
+  (ctx) => {
+    console.log(ctx.request.body);
+    // => POST body
+    ctx.body = JSON.stringify(ctx.request.body);
+  }
+);
+```
+
+### Session
+
+[koa-session](https://github.com/koajs/session)
+
+## Passport
+
+passportJS 原本是以 Express 中間介形式設計，要在 koa 使用要下載 [koa-passport](https://github.com/rkusa/koa-passport)。
+
+### Strategy
+
+passport 有很多 strategy (認證方式) 可以使用，這些都是套件需要另外安裝。
+
+我們先來簡單試試 local strategy (使用帳密登入)
+
+```javascript
+import passport from 'koa-passport'
+import { Strategy as LocalStrategy } from 'passport-local'
+
+const fakeUser = {
+  username: 'tim',
+  password: '12345',
+  level: 20
+}
+
+passport.use(new LocalStrategy(
+  function (username, password, done) {
+    if (username !== fakeUser.username) return done(null, false)
+    if (password !== fakeUser.password) return done(null, false)
+    done(null, fakeUser)
+  }
+))
+
+export default passport
+```
+
+然後在 session router 使用
+
+```javascript
+import Router from 'koa-router'
+import koaBody from 'koa-body'
+import passport from '../passport/local'
+
+const router = new Router({
+  prefix: '/session'
+})
+
+// init passport middleware
+router.use(passport.initialize())
+
+router.post('/',
+  koaBody(),
+  (ctx, next) => {
+    console.log(ctx.request.body)
+    next()
+  },
+  passport.authenticate('local', { session: false }),
+  (ctx, next) => {
+    console.log(ctx.state.user)
+    ctx.body = 'success'
+  }
+)
+
+export default router
+```
+
+`passport.authenticate` 使用對應的 strategy, 如果驗證成功，預設會將 user 資訊加到 `ctx.state.user`，並繼續執行後面的中間介。
+
+失敗則回應 `401 Unauthorized`。
+
+可以傳入 `successRedirect`, `failRedirect` 來導向，或是在 middleware callback 中呼叫 `passport.authenticate` 而非當成中間介使用，來進行更多操作。
