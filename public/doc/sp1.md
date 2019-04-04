@@ -229,6 +229,12 @@ router.post('/users', koaBody(),
 
 [koa-session](https://github.com/koajs/session)
 
+### Static files
+
+[koa-static](https://github.com/koajs/static)
+
+預設的 filename 是 index.html，可用 options.index 更改
+
 ## Passport
 
 passportJS 原本是以 Express 中間介形式設計，要在 koa 使用要下載 [koa-passport](https://github.com/rkusa/koa-passport)。
@@ -295,3 +301,100 @@ export default router
 失敗則回應 `401 Unauthorized`。
 
 可以傳入 `successRedirect`, `failRedirect` 來導向，或是在 middleware callback 中呼叫 `passport.authenticate` 而非當成中間介使用，來進行更多操作。
+
+### establish session
+
+如果你要使用 session，passport 使用 serialize 決定將甚麼資訊存在 cookie (這裡使用 id)，當 cookie 存在時會用 deseialize 來找尋對應使用者資訊，存到 `req.user` (koa-passport 存在 `ctx.state.user`)
+
+```javascript
+// 此為範例示意
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+```
+
+### 完整流程
+
+我們來看在 `/session` 這個子 router 內的完整流程：
+
+#### 初始化
+
+首先 passport 會初始化，並且我們使用 session 檢查 user 因此需要 `passport.session` middleware 初始化 (當然我們在更之前已經先設定好 `koa-session` middleware)
+
+```javascript
+router.use(passport.initialize())
+router.use(passport.session())
+```
+
+#### 登入
+
+```javascript
+router.post('/',
+  koaBody(),
+  passport.authenticate('local', { session: true }),
+  function (ctx, next) {
+    console.log('user:', ctx.state.user)
+    ctx.body = 'success'
+  }
+)
+```
+
+passport 會使用 local strategy 來驗證 `ctx.request.body` 內的使用者資訊。
+
+這裡預設行為成功會繼續執行下個 middleware，失敗返回 `401 Unauthorized`
+
+然後我不確定這邊要不要手動呼叫 `ctx.login(ctx.state.user)` 因為貌似他已經自動將使用者資訊塞進 session 了，passport 會使用我們之前已經定義好的 `serializeUser` 邏輯來將 user 資訊存進 session。
+
+#### 檢查 session
+
+因為我們有使用 `passport.session()` 這個 middleware，如果 session 已經含有使用者資訊，passport 會自動做一些處理
+
+```javascript
+router.get('/', ctx => {
+  console.log('session:', ctx.session) // 這是原本的 session
+  console.log('state:', ctx.state.user) // passport 塞的
+  console.log('isAuth:', ctx.isAuthenticated())
+  console.log('unAuth:', ctx.isUnauthenticated())
+  ctx.body = 'session'
+})
+```
+
+其中 passport 會使用我們之前定義的 `deserializeUser` 邏輯來將 user 資訊加到 `ctx.state.user` (如果是 express 則是 `req.uesr`)
+
+並且提供 `isAuthenticated()` 和 `isUnauthenticated()` 兩個方法來檢查使用者是否已經登入 (有 session)
+
+#### 登出
+
+passport 在 ctx 附加的 `logout` 方法可以清除 session 的 passport 使用者資訊
+
+```javascript
+router.delete('/', async ctx => {
+  await ctx.logout()
+  ctx.body = 'logout'
+})
+```
+
+## 測試登入頁面
+
+### 靜態路由
+
+使用 `koa-static` 靜態路由
+
+```javascript
+import staticRoute from 'koa-static'
+
+// app is the Koa instance
+// static
+app.use(staticRoute(path.resolve(__dirname, '../public')))
+```
+
+### index.html
+
+在 `public` 資料夾新增 `index.html` 我使用 boostrap-vue 元件
+
