@@ -15,6 +15,9 @@ const store = new Vuex.Store({
     setPreviews (state, payload) {
       state.previews = payload
     },
+    addPreviews (state, payload) {
+      state.previews = state.previews.concat(payload)
+    },
     setTags(state, payload) {
       state.tags = payload
     },

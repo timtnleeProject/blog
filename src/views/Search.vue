@@ -70,6 +70,7 @@ export default {
   created(){
     this.query_tags = this.$route.query
     window.addEventListener('scroll',this.scroll)
+    this.$getPreviews(this.$store.state.lists.articles.length)
   },
   mounted(){
     this.scroll()

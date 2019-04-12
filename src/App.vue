@@ -18,7 +18,6 @@ import MyHeader from './components/Header.vue'
 import MySidebar from './components/Sidebar.vue'
 import MyFooter from './components/Footer.vue'
 import Loading from './components/Loading.vue'
-import { mapState } from "vuex"
 
 export default {
   name: 'app',
@@ -43,50 +42,10 @@ export default {
       this.$store.commit('setLists', JSON.parse(res))
     })
     Promise.all([setSettings, setLists]).then(()=>{
-      const table = {}
-      const tags_map = {}
-      const tag_lists = []
-      const articles_names = this.lists.articles.map(a=>{ 
-        table[a.name] = a
-        return a.name
-      })
-      this.$getArticles(articles_names).then(raws=>{
-        this.$store.commit('setPreviews',raws.map(r=>{
-          const content_ary = r.content.split('\n').filter(str=>str.trim()!="")
-          const paragraph =  content_ary.slice(1, 1+this.settings.PREVIEW_LINE).join('\n')
-          const metadata = table[r.name]
-          const tags = metadata.tags||[]
-          //sum tags
-          tags.forEach(tag=>{
-            if(!tags_map[tag]){
-              tags_map[tag] = 1
-              tag_lists.push(tag)
-            } else {
-              tags_map[tag] += 1
-            }
-          })
-          return { // previews
-            name: r.name,
-            pinned: metadata.pinned,
-            image: metadata.image,
-            tags: tags.sort(),
-            content: this.$markdown.render(paragraph)+ '</br>',
-            date: new Date(metadata.date),
-            title: content_ary[0].slice(-(content_ary[0].length-2))
-          }
-        }))
-        this.$store.commit('setTags', tag_lists)
-        this.$store.commit('setTagsCount', tags_map)
-        this.loaded = true
-      }).catch(e=>{
-        window.console.error(e)
-      })
-    })
-  },
-  computed: {
-    ...mapState({
-      settings: 'settings',
-      lists: 'lists'
+      this.$getTags()
+      return this.$getPreviews(this.$store.state.settings.HOME_MAX_PREVIEW)
+    }).then(()=>{
+      this.loaded = true
     })
   },
   methods: {
