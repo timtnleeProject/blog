@@ -50,6 +50,12 @@ sudo ufw status numbered
 sudo ufw delete RULE|NUM
 ```
 
+也可直接刪除
+
+```bash
+sudo ufw delete allow 3000
+```
+
 ## Pm2
 
 安裝 Pm2
