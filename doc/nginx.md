@@ -1,4 +1,4 @@
-# Nginx
+# Nginx & linux
 
 nginx 指令、設定整理
 

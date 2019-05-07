@@ -2,6 +2,21 @@
   "about":"about",
   "articles": [
     {
+      "name":"fixvuldeps",
+      "tags": ["npm","nodejs","筆記"],
+      "date":"2019/5/3"
+    },
+    {
+      "name":"gmailinnode",
+      "tags": ["google","nodejs","筆記","未完"],
+      "date":"2019/5/2"
+    },
+    {
+      "name":"passportgoogleoauth",
+      "tags": ["passportjs","筆記"],
+      "date":"2019/4/23"
+    },
+    {
       "name":"m001ch3",
       "tags": ["mongodb","筆記"],
       "date":"2019/4/22",
@@ -11,6 +26,11 @@
       "name": "sp1",
       "tags": ["side project","koa","passportjs","筆記"],
       "date":"2019/4"
+    },
+    {
+      "name": "linuxcommon",
+      "tags": ["linux","ubuntu","筆記"],
+      "date":"2019/5/7"
     },
     {
       "name": "nginx",

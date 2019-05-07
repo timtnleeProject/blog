@@ -394,7 +394,24 @@ import staticRoute from 'koa-static'
 app.use(staticRoute(path.resolve(__dirname, '../public')))
 ```
 
-### index.html
+### webpack proxy
 
-在 `public` 資料夾新增 `index.html` 我使用 boostrap-vue 元件
+如果我們同時開發另一個 spa，例如使用 vue-cli，開發時 port 不同會有 CORS 的問題
 
+可以用 webpack devServer 的 proxy 設定解決
+
+此例前端為 8080，後端為 3000
+
+*vue.config.js*
+
+```javascript
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3000'
+      }
+    }
+  }
+}
+```
