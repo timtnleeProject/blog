@@ -59,47 +59,47 @@
 </template>
 
 <script>
-import Previews from "../components/Previews.vue"
-import { mapState } from "vuex"
+import Previews from '../components/Previews.vue'
+import { mapState } from 'vuex'
 
 export default {
-  beforeRouteUpdate(to, _, next) {
+  beforeRouteUpdate (to, _, next) {
     this.query_tags = to.query
     next()
   },
-  created(){
+  created () {
     this.query_tags = this.$route.query
-    window.addEventListener('scroll',this.scroll)
+    window.addEventListener('scroll', this.scroll)
     this.$getPreviews(this.$store.state.lists.articles.length)
   },
-  mounted(){
+  mounted () {
     this.scroll()
   },
-  destroyed(){
+  destroyed () {
     window.removeEventListener('scroll', this.scroll)
   },
   data: () => {
     return {
       desc: true,
       query_tags: {},
-      search_title: "",
-      condition: "OR",
-      fixed: false,
+      search_title: '',
+      condition: 'OR',
+      fixed: false
     }
   },
   components: {
     Previews
   },
   computed: {
-    selected_tags() {
-      //check query tags exist in available tags
+    selected_tags () {
+      // check query tags exist in available tags
       const exist = {}
       for (let t in this.query_tags) {
         if (this.tags.indexOf(t) != -1) exist[t] = true
       }
       return exist
     },
-    filtered_previews() {
+    filtered_previews () {
       return this.previews
         .slice()
         .filter(this.find_title())
@@ -108,13 +108,13 @@ export default {
         )
         .filter(this.find_tags())
     },
-    select_tag_count() {
+    select_tag_count () {
       return Object.keys(this.selected_tags).length
     },
-    sorted_tags() {
+    sorted_tags () {
       return this.tags.slice().sort()
     },
-    sorted_selected_tags() {
+    sorted_selected_tags () {
       const tags = []
       for (let tag in this.selected_tags) {
         tags.push(tag)
@@ -122,44 +122,43 @@ export default {
       return tags.sort()
     },
     ...mapState({
-      previews: "previews",
-      tags_count: "tags_count",
-      tags: "tags"
+      previews: 'previews',
+      tags_count: 'tags_count',
+      tags: 'tags'
     })
   },
   methods: {
-    switch_cond() {
-      if (this.condition === "OR") this.condition = "AND"
-      else this.condition = "OR"
+    switch_cond () {
+      if (this.condition === 'OR') this.condition = 'AND'
+      else this.condition = 'OR'
     },
-    select_tag(tag) {
+    select_tag (tag) {
       const query = {}
       query[tag] = true
       this.$router.push({
-        path: "/search",
+        path: '/search',
         query: Object.assign(query, this.selected_tags)
       })
     },
-    unselect_tag(tag) {
+    unselect_tag (tag) {
       const query = Object.assign({}, this.selected_tags)
       delete query[tag]
       this.$router.push({
-        path: "/search",
+        path: '/search',
         query
       })
     },
-    find_title() {
-      if (this.search_title.trim() === "") return () => true // if no title search, find all
+    find_title () {
+      if (this.search_title.trim() === '') return () => true // if no title search, find all
       return prev => {
-        const words = this.search_title.split(" ").filter(word => word != "")
+        const words = this.search_title.split(' ').filter(word => word != '')
         for (let word of words) {
-          if (prev.title.toLowerCase().indexOf(word.toLowerCase()) != -1)
-            return true
+          if (prev.title.toLowerCase().indexOf(word.toLowerCase()) != -1) { return true }
         }
         return false
       }
     },
-    find_tags() {
+    find_tags () {
       if (this.select_tag_count === 0) return () => true // if no tags selected, find all
       const or_filter = prev => {
         const tags = prev.tags
@@ -176,18 +175,18 @@ export default {
         }
         return true
       }
-      return this.condition === "OR" ? or_filter : and_filter
+      return this.condition === 'OR' ? or_filter : and_filter
     },
-    scroll() {
+    scroll () {
       const pos = this.$el.querySelector('.search-area').getBoundingClientRect()
-      if(pos.bottom<0) this.fixed = true
+      if (pos.bottom < 0) this.fixed = true
       else this.fixed = false
     },
-    toTop() {
+    toTop () {
       window.scrollTo({
-        top:0,
-        left:0,
-        behavior: 'smooth' 
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
       })
     }
   }
@@ -297,5 +296,3 @@ export default {
   }
 }
 </style>
-
-

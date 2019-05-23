@@ -29,27 +29,27 @@ import { mapState } from 'vuex'
 import Tag from './Tag.vue'
 
 export default {
-  props:['max','previews'],
+  props: ['max', 'previews'],
   components: {
     Tag
   },
-  computed:{
-    preview_dates(){
-      return (this.previews)?this.previews.map(p=>{
+  computed: {
+    preview_dates () {
+      return (this.previews) ? this.previews.map(p => {
         const d = p.date
-        return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`
-      }):[]
+        return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`
+      }) : []
     },
-    previews_cut() {
-      return this.previews.slice(0,this.max)
+    previews_cut () {
+      return this.previews.slice(0, this.max)
     },
     ...mapState({
-      lists:'lists',
+      lists: 'lists',
       settings: 'settings'
     })
-  } ,
+  },
   methods: {
-    linkto(route){
+    linkto (route) {
       this.$router.push(route)
     }
   }
@@ -127,5 +127,3 @@ export default {
   font-size: 0.86rem;
 }
 </style>
-
-

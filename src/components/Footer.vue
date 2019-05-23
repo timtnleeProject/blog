@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  data: ()=>{
+  data: () => {
     return {
     }
   },
   computed: {
-    settings(){
+    settings () {
       return this.$store.state.settings
     }
   }

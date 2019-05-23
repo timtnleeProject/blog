@@ -24,7 +24,7 @@ export default {
           const xhr = new XMLHttpRequest()
           xhr.open('GET', `./doc/${article_name}.md`)
           xhr.onreadystatechange = function () {
-            if (this.status === 200 && this.readyState === 4) resolve({name:article_name, content:this.responseText})
+            if (this.status === 200 && this.readyState === 4) resolve({ name: article_name, content: this.responseText })
             else if (this.readyState === 4) reject()
           }
           xhr.send()
@@ -43,7 +43,7 @@ export default {
     Vue.prototype.$getTags = function () {
       const tags_map = {}
       const tag_lists = []
-      this.$store.state.lists.articles.forEach(a=>{ 
+      this.$store.state.lists.articles.forEach(a => {
         if (Array.isArray(a.tags)) {
           a.tags.forEach(t => {
             if (tags_map[t] === undefined) tags_map[t] = 0
@@ -52,7 +52,7 @@ export default {
         }
       })
 
-      for(let k in tags_map) {
+      for (let k in tags_map) {
         tag_lists.push(k)
       }
 
@@ -66,28 +66,28 @@ export default {
       const end = this.$store.state.previews.length + num
       const articles_names = this.$store.state.lists.articles
         .sort((a, b) => Boolean(b.pinned) - Boolean(a.pinned))
-        .map(a=>{ 
+        .map(a => {
           if (table[a.name]) throw 'article list name conflict.'
           table[a.name] = a
           return a.name
         }).slice(start, end)
-      this.$getArticles(articles_names).then(raws=>{
-        this.$store.commit('addPreviews', raws.map(r=>{
-          const content_ary = r.content.split('\n').filter(str=>str.trim()!="")
-          const paragraph =  content_ary.slice(1, 1+this.$store.state.settings.PREVIEW_LINE).join('\n')
+      this.$getArticles(articles_names).then(raws => {
+        this.$store.commit('addPreviews', raws.map(r => {
+          const content_ary = r.content.split('\n').filter(str => str.trim() != '')
+          const paragraph = content_ary.slice(1, 1 + this.$store.state.settings.PREVIEW_LINE).join('\n')
           const metadata = table[r.name]
-          const tags = metadata.tags||[]
+          const tags = metadata.tags || []
           return { // previews
             name: r.name,
             pinned: metadata.pinned,
             image: metadata.image,
             tags: tags.sort(),
-            content: this.$markdown.render(paragraph)+ '</br>',
+            content: this.$markdown.render(paragraph) + '</br>',
             date: new Date(metadata.date),
-            title: content_ary[0].slice(-(content_ary[0].length-2))
+            title: content_ary[0].slice(-(content_ary[0].length - 2))
           }
         }))
-      }).catch(e=>{
+      }).catch(e => {
         window.console.error(e)
       })
     }

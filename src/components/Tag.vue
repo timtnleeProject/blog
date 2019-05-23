@@ -9,12 +9,11 @@
 export default {
   props: ['tag'],
   methods: {
-    linkto(){
+    linkto () {
       const query = {}
       query[this.tag] = true
-      this.$router.push({path:'/search',query})
+      this.$router.push({ path: '/search', query })
     }
-  },
+  }
 }
 </script>
-

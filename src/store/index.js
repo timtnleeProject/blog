@@ -18,7 +18,7 @@ const store = new Vuex.Store({
     addPreviews (state, payload) {
       state.previews = state.previews.concat(payload)
     },
-    setTags(state, payload) {
+    setTags (state, payload) {
       state.tags = payload
     },
     setLists (state, payload) {
@@ -27,7 +27,7 @@ const store = new Vuex.Store({
     setSettings (state, payload) {
       state.settings = payload
     },
-    setTagsCount(state, payload) {
+    setTagsCount (state, payload) {
       state.tags_count = payload
     }
   }

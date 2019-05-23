@@ -13,46 +13,46 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapState } from 'vuex'
 import Loading from '../components/Loading.vue'
 
 export default {
   components: {
     Loading
   },
-  data: ()=>{
+  data: () => {
     return {
       content: '',
       loaded: false
     }
   },
-  created() {
+  created () {
     this.getSource()
   },
   computed: {
     ...mapState({
-      lists:'lists',
+      lists: 'lists',
       settings: 'settings'
     })
   },
   methods: {
-    getSource() {
-      if(this.lists.about) {
-        this.$get(`doc/${this.lists.about}.md`).then(res=>{
+    getSource () {
+      if (this.lists.about) {
+        this.$get(`doc/${this.lists.about}.md`).then(res => {
           this.content = this.$markdown.render(res)
-          this.$nextTick(()=>{
+          this.$nextTick(() => {
             this.setLinksAttr()
             this.loaded = true
           })
         })
       }
     },
-    setLinksAttr(){
-      this.$el.querySelectorAll('a').forEach(el=>{
-        el.setAttribute('target','_blank')
+    setLinksAttr () {
+      this.$el.querySelectorAll('a').forEach(el => {
+        el.setAttribute('target', '_blank')
       })
       window.console.log('[App] set links attr.')
-    },
+    }
   },
   watch: {
     lists () {
@@ -80,4 +80,3 @@ export default {
   display: block;
 }
 </style>
-

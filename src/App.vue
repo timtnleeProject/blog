@@ -21,10 +21,10 @@ import Loading from './components/Loading.vue'
 
 export default {
   name: 'app',
-  data: ()=>{
+  data: () => {
     return {
       show: false,
-      loaded: false,
+      loaded: false
     }
   },
   components: {
@@ -33,30 +33,30 @@ export default {
     MySidebar,
     Loading
   },
-  created(){
+  created () {
     window.console.log('[Init] Get articles\' previews')
-    const setSettings = this.$get('./setting.js').then(res=>{
-      this.$store.commit('setSettings', new Function(res)())
+    const setSettings = this.$get('./setting.json').then(res => {
+      this.$store.commit('setSettings', JSON.parse(res))
     })
-    const setLists = this.$get('./list.json').then(res=>{
+    const setLists = this.$get('./list.json').then(res => {
       this.$store.commit('setLists', JSON.parse(res))
     })
-    Promise.all([setSettings, setLists]).then(()=>{
+    Promise.all([setSettings, setLists]).then(() => {
       this.$getTags()
       return this.$getPreviews(this.$store.state.settings.HOME_MAX_PREVIEW)
-    }).then(()=>{
+    }).then(() => {
       this.loaded = true
     })
   },
   methods: {
-    stickyPolyfill() {
-      return ((!window.CSS||!CSS.supports("position", "sticky"))?{marginTop: '60px'}:{}) 
+    stickyPolyfill () {
+      return ((!window.CSS || !CSS.supports('position', 'sticky')) ? { marginTop: '60px' } : {})
     },
-    toggleSideBar(){
+    toggleSideBar () {
       this.show = !this.show
     },
-    closeSideBar() {
-      if(this.show) this.show=false
+    closeSideBar () {
+      if (this.show) this.show = false
     }
   }
 }
@@ -144,7 +144,7 @@ body {
   color: white;
   opacity: 0.6;
 }
-// .view-fade-enter-active, 
+// .view-fade-enter-active,
 // .view-fade-leave-active {
 //   transition: opacity .2s ease;
 // }

@@ -5,31 +5,31 @@
     <router-link v-for="r in routes" class="tx-light" :class="{active:r.path===$route.path}" :key="r.name" :to="r.path">
       <span class="tx">{{r.name}}</span>
     </router-link>
-  </div> 
+  </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { mapState } from "vuex"
+import { mapState } from 'vuex'
 
 export default Vue.extend({
-  data: ()=>{
+  data: () => {
     return {
       routes: [{
         name: 'Home',
         path: '/'
-      },{
+      }, {
         name: 'Articles',
         path: '/search'
-      },{
+      }, {
         name: 'About me',
         path: '/about'
       }]
     }
   },
-  computed:{
+  computed: {
     ...mapState({
-      settings:'settings'
+      settings: 'settings'
     })
   }
 })

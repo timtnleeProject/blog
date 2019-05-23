@@ -13,7 +13,7 @@
         </div>
         <router-link class="block last" to="/search">> more articles</router-link>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 <script>
 import MyPreviews from '../components/Previews.vue'
 import Banner from '../components/Banner.vue'
-import { mapState } from "vuex"
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -29,18 +29,18 @@ export default {
     MyPreviews
   },
   computed: {
-    pinned_previews(){
-      return this.sorted_previews.filter(p=>p.pinned)
+    pinned_previews () {
+      return this.sorted_previews.filter(p => p.pinned)
     },
-    normal_previews(){
-      return this.sorted_previews.filter(p=>!p.pinned)
+    normal_previews () {
+      return this.sorted_previews.filter(p => !p.pinned)
     },
-    sorted_previews(){
-      return this.previews.slice().sort((a,b)=>b.date.getTime() - a.date.getTime())
+    sorted_previews () {
+      return this.previews.slice().sort((a, b) => b.date.getTime() - a.date.getTime())
     },
     ...mapState({
       previews: 'previews',
-      settings:'settings'
+      settings: 'settings'
     })
   }
 }
@@ -52,5 +52,3 @@ export default {
   font-size: 1.2rem;
 }
 </style>
-
-

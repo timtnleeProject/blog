@@ -41,7 +41,7 @@ import Tag from '../components/Tag.vue'
 import Loading from '../components/Loading.vue'
 import Comment from '../components/Comment.vue'
 import { mapState } from 'vuex'
-import { clipperFixed } from "vuejs-clipper"
+import { clipperFixed } from 'vuejs-clipper'
 
 export default {
   components: {
@@ -50,7 +50,7 @@ export default {
     clipperFixed,
     Comment
   },
-  data: ()=>{
+  data: () => {
     return {
       name: '',
       content: '',
@@ -64,21 +64,21 @@ export default {
       show: false,
       zoomSrc: 'images/issue/mail1.jpg',
       openZoom: false,
-      ratio: 4/3
+      ratio: 4 / 3
     }
   },
-  created(){
-    window.addEventListener('scroll',this.scroll)
+  created () {
+    window.addEventListener('scroll', this.scroll)
   },
-  destroyed(){
+  destroyed () {
     window.removeEventListener('scroll', this.scroll)
   },
-  mounted(){
+  mounted () {
     this.name = this.$route.params.name
     window.console.log(`[Fetch] fetch article "${this.name}"`)
-    this.$get(`./doc/${this.name}.md`).then(res=>{
+    this.$get(`./doc/${this.name}.md`).then(res => {
       this.content = this.$markdown.render(res)
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         window.Prism.highlightAll()
         window.console.log('[Prism] syntax hightlight after fetching.')
         this.setLinksAttr()
@@ -89,46 +89,46 @@ export default {
     })
   },
   computed: {
-    metadata() {
-      return this.previews.find(prev=>prev.name===this.name)
+    metadata () {
+      return this.previews.find(prev => prev.name === this.name)
     },
-    tags() {
-      return (this.metadata)?this.metadata.tags:[]
+    tags () {
+      return (this.metadata) ? this.metadata.tags : []
     },
-    pinned() {
-      return (this.metadata)?this.metadata.pinned:false
+    pinned () {
+      return (this.metadata) ? this.metadata.pinned : false
     },
     ...mapState({
       previews: 'previews'
     }),
-    date(){
+    date () {
       return (this.metadata)
-        ? (function(metadata){
+        ? (function (metadata) {
           const d = metadata.date
-          return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`
+          return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`
         })(this.metadata)
         : ''
-    },
+    }
   },
   methods: {
-    scroll(){
+    scroll () {
       this.scrollY = window.scrollY
       this.calcScrollPos()
     },
-    calcScrollPos() {
-      if(this.tree.length===0) return
-      
+    calcScrollPos () {
+      if (this.tree.length === 0) return
+
       let sc_offset = this.getScrollOffset()
-      let h1top,h2top,h3top
-      let h1idx=-1,h2idx =-1,h3idx = -1
+      let h1top, h2top, h3top
+      let h1idx = -1; let h2idx = -1; let h3idx = -1
       const mappingTop = (h) => h.link.offsetTop - sc_offset
       h1top = this.tree.map(mappingTop)
       h1idx = this.getScrollIdx(h1top)
-      if(h1idx!=-1 && this.tree[h1idx].leaves.length>0) {
+      if (h1idx != -1 && this.tree[h1idx].leaves.length > 0) {
         h2top = this.tree[h1idx].leaves.map(mappingTop)
         h2idx = this.getScrollIdx(h2top)
       }
-      if(h2idx!=-1) {
+      if (h2idx != -1) {
         const leaf = this.tree[h1idx].leaves[h2idx]
         h3top = leaf.leaves.map(mappingTop)
         h3idx = this.getScrollIdx(h3top)
@@ -137,20 +137,20 @@ export default {
       this.h2idx = h2idx
       this.h3idx = h3idx
     },
-    getScrollIdx(tops){
-      let idx = tops.reduce((acc, curr) => acc + (this.scrollY+1>=curr) , 0)
-      return Math.max(idx-1,0)
+    getScrollIdx (tops) {
+      let idx = tops.reduce((acc, curr) => acc + (this.scrollY + 1 >= curr), 0)
+      return Math.max(idx - 1, 0)
     },
-    getScrollOffset() {
+    getScrollOffset () {
       return document.querySelector('.my-header').getBoundingClientRect().height
     },
-    setLinksAttr(){
-      this.$el.querySelectorAll('a').forEach(el=>{
-        el.setAttribute('target','_blank')
+    setLinksAttr () {
+      this.$el.querySelectorAll('a').forEach(el => {
+        el.setAttribute('target', '_blank')
       })
       window.console.log('[App] set links attr.')
     },
-    generateMenu(){
+    generateMenu () {
       const tree = []
       /**
        * [{
@@ -160,54 +160,53 @@ export default {
        */
       let depth = 1
       let indecator = tree
-      this.$el.querySelectorAll("h1,h2,h3").forEach(el=>{
+      this.$el.querySelectorAll('h1,h2,h3').forEach(el => {
         const name = el.innerText
         const nodeName = el.nodeName
         const link = el
-        if(nodeName==='H1') {
-          if(depth != 1){
+        if (nodeName === 'H1') {
+          if (depth != 1) {
             indecator = tree
             depth = 1
-          } 
-          indecator.push({name, leaves:[], link})
-        } else if(nodeName==='H2' && depth>0) {
-          if(depth!= 2) {
-            indecator = tree[tree.length-1]
+          }
+          indecator.push({ name, leaves: [], link })
+        } else if (nodeName === 'H2' && depth > 0) {
+          if (depth != 2) {
+            indecator = tree[tree.length - 1]
             depth = 2
           }
-          indecator.leaves.push({name, leaves:[], link})
-        } else if(nodeName==='H3'&&depth>1) {
-          if(depth!= 3) {
-            const leaf = tree[tree.length-1].leaves
-            indecator = tree[tree.length-1].leaves[leaf.length-1]
+          indecator.leaves.push({ name, leaves: [], link })
+        } else if (nodeName === 'H3' && depth > 1) {
+          if (depth != 3) {
+            const leaf = tree[tree.length - 1].leaves
+            indecator = tree[tree.length - 1].leaves[leaf.length - 1]
             depth = 3
           }
-          indecator.leaves.push({name, link})
+          indecator.leaves.push({ name, link })
         }
       })
       this.tree = tree
       window.console.log('[App] generate menu.')
     },
-    scrollTo(el){
+    scrollTo (el) {
       let sc_offset = this.getScrollOffset()
-      window.scrollTo(0,el.offsetTop - sc_offset)
+      window.scrollTo(0, el.offsetTop - sc_offset)
       this.scroll()
     },
-    zoomImg(e){
-      if (e.target.nodeName === 'IMG'){
+    zoomImg (e) {
+      if (e.target.nodeName === 'IMG') {
         this.zoomSrc = e.target.src
         this.openZoom = true
       }
     },
-    closeZoom(e){
-      if (e.target.classList.contains('zoomin'))
-        this.openZoom = false
+    closeZoom (e) {
+      if (e.target.classList.contains('zoomin')) { this.openZoom = false }
     },
-    toggleMenu(e){
-      if(this.$el.querySelector('.tree').contains(e.target)) return
-      if(this.show) this.show=false
+    toggleMenu (e) {
+      if (this.$el.querySelector('.tree').contains(e.target)) return
+      if (this.show) this.show = false
     },
-    expandToggle() {
+    expandToggle () {
       this.expand_all = !this.expand_all
     }
   }
@@ -355,5 +354,3 @@ export default {
   }
 }
 </style>
-
-

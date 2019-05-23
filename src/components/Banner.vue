@@ -10,7 +10,7 @@
 <script>
 export default {
   computed: {
-    settings() {
+    settings () {
       return this.$store.state.settings
     }
   }
@@ -70,5 +70,3 @@ export default {
   }
 }
 </style>
-
-

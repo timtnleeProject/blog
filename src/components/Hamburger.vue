@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -24,4 +24,3 @@ export default {
   border-radius: 20px;
 }
 </style>
-

@@ -13,20 +13,20 @@ export default {
   components: {
     Hamburger
   },
-  data: ()=>{
+  data: () => {
     return {
     }
   },
   computed: {
-    settings(){
+    settings () {
       return this.$store.state.settings
     }
   },
   methods: {
-    toHome(){
+    toHome () {
       this.$router.push('/')
     },
-    toggleBar(e){
+    toggleBar (e) {
       e.stopPropagation()
       this.$emit('toggleBar')
     }
