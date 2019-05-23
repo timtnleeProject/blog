@@ -179,6 +179,57 @@ d3.json("./taiwan.json",function(err,json){
 })
 ```
 
+### 標示出準確經緯度位置
+
+給定經緯度 `[121.5648,25.0346]` (台北)，如何在剛剛地圖上標示出準確位置?
+
+可以利用 projection, 文件說明：
+
+> projection(point) <>
+>
+> Returns a new array [x, y] (typically in pixels) representing the projected point of the given point. The point must be specified as a two-element array [longitude, latitude] in degrees. May return null if the specified point has no defined projected position, such as when the point is outside the clipping bounds of the projection.
+
+利用我們已經創建的 projection 便可在地圖上標示位置
+
+```javascript
+const point = [[long, lat]]
+d3.select('.map')
+  .selectAll()
+  .data(point)
+  .enter()
+  .append('img')
+  .attr('class','marker')
+  .attr('src','mark.png')
+  .style('left',function(d){
+      return projection(d)[0]/6 + '%'
+  })
+  .style('top',function(d){
+      return projection(d)[1]/6 + '%'
+  })
+```
+
+上面除以 6 是因為 svg viewbox 是 600x600，換算成實際元素的 position %
+
+```css
+.map {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    border: 1px dotted lightgray;
+}
+.marker{
+    position: absolute;
+    display: block;
+    width: 5%;
+    height: 5%;
+    max-width: 30px;
+    max-height: 30px;
+    transform: translate(-50%,-100%);
+}
+```
+
+另外 svg scaling 可以看[這篇](https://css-tricks.com/scale-svg/)
+
 ![404](images/d3_note/ex.jpg)
 
 完整[範例](https://timtnleeproject.github.io/static-demo/d3-geomap-2.0.0/index.html)，和[程式碼](https://github.com/timtnleeProject/static-demo/tree/master/d3-geomap-2.0.0)

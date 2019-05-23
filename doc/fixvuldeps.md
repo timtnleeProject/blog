@@ -1,5 +1,7 @@
 # Vulnerability dependencies
 
+遇到 Vulnerability dependencies 問題
+
 ## Vulnerability alert
 
 Github 會自動偵測有資安漏洞的 dependencies 並提醒你更新
@@ -44,3 +46,19 @@ vuejs-clipper@0.2.12 C:\Users\User\Desktop\SYSCOM(C)\vuejs-clipper
 node-sass 同樣為此所苦...表示我們[正在嘗試，別再PR了!](https://github.com/sass/node-sass/issues/2625)
 
 等到這兩個庫修正弱點問題，我們再來更新專案就可以了。
+
+## 修正
+
+在相關模組發布新版之後可以使用 `npm audit fix` 來修正了
+
+但是 github 還是會顯示 alert，因為pacakge.lock.json 的其他仍有使用低版本的 tar
+
+參考這個方法
+
+![404](images/fixvuldeps/resolve.jpg)
+
+手動將 `package.lock.json` 需要修正的依賴從 requires 搬到 dependencies 並手動更改版本。
+
+然後刪除 node_modules，重新 `npm install`，`npm audit`測試
+
+完成後 github 就不會有警告了
