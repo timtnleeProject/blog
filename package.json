@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "auto": "npm run build && npm run deploy",
+    "push": "git add .&&git commit -m \"update\"&&git push origin",
     "lint": "vue-cli-service lint",
     "deploy": "gh-pages -d dist -m \"deploy build files\""
   },
