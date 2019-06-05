@@ -2,6 +2,12 @@
   "about":"about",
   "articles": [
     {
+      "name": "mongodbAggregation",
+      "tags": ["mongodb","筆記", "未完"],
+      "image": "images/mongodb/mongodb.jpg",
+      "date":"2019/5/28"
+    },
+    {
       "name":"fixvuldeps",
       "tags": ["npm","nodejs","筆記"],
       "date":"2019/5/3"
