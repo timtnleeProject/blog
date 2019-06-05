@@ -30,7 +30,20 @@ location / {
 }
 ```
 
+### if
+
+* 直接比較變量，使用 `=` 或 `!=`
+* `~` 正歸表達式匹配
+* `~*` 不區分大小寫匹配
+* `!~` 區分大小寫的不匹配
+
 ## 其他
+
+### SSL 的 default server block
+
+需要包含 certificate 路徑
+
+見[這篇](https://serverfault.com/questions/578648/properly-setting-up-a-default-nginx-server-for-https)
 
 ### 重啟服務
 

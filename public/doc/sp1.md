@@ -346,9 +346,7 @@ router.post('/',
 ```
 
 passport 會使用 local strategy 來驗證 `ctx.request.body` 內的使用者資訊。
-
 這裡預設行為成功會繼續執行下個 middleware，失敗返回 `401 Unauthorized`
-
 然後我不確定這邊要不要手動呼叫 `ctx.login(ctx.state.user)` 因為貌似他已經自動將使用者資訊塞進 session 了，passport 會使用我們之前已經定義好的 `serializeUser` 邏輯來將 user 資訊存進 session。
 
 #### 檢查 session
@@ -397,9 +395,7 @@ app.use(staticRoute(path.resolve(__dirname, '../public')))
 ### webpack proxy
 
 如果我們同時開發另一個 spa，例如使用 vue-cli，開發時 port 不同會有 CORS 的問題
-
 可以用 webpack devServer 的 proxy 設定解決
-
 此例前端為 8080，後端為 3000
 
 *vue.config.js*

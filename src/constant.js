@@ -3,7 +3,9 @@ import md from 'markdown-it'
 export default {
   install: function (Vue) {
     // markdown parser
-    Vue.prototype.$markdown = new md()
+    Vue.prototype.$markdown = new md({
+      breaks: true
+    })
 
     // ajax function
     Vue.prototype.$get = function (url) {
